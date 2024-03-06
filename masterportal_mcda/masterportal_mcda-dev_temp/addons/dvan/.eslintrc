@@ -1,0 +1,13 @@
+{
+    "rules": {
+        "one-var": ["warn", { "initialized": "never" }],
+        "no-unused-vars": ["error", { "args": "none" }],
+        "no-empty-function": "off",
+        "no-constant-condition": "off",
+        "no-shadow": "off",
+        "vuejs-accessibility/form-control-has-label": "off",
+        "vue/no-static-inline-styles": "off",
+        "callback-return": "off",
+        "func-style": ["error", "declaration", { "allowArrowFunctions": true }]
+    }
+}

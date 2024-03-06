@@ -1,0 +1,11 @@
+routing:
+  providers: 
+    - ors-api
+    - routing-api
+  default_provider: ors-api
+  provider_options:
+    ors-api:
+      url: http://localhost:8082
+demand:
+  run_interval: 1
+  delete_interval: 5

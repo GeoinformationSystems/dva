@@ -1,0 +1,986 @@
+{
+	"Portalconfig": {
+    "treeType": "custom",
+		"searchBar": {
+			"komoot": {
+        "minChars": 3,
+        "serviceId": "11",
+        "limit": 20,
+        "lang": "de",
+        "lat": 53.6,
+        "lon": 10.0,
+        "bbox": "9.6,53.3,10.4,53.8"
+    },
+      "visibleVector": {},
+      "tree": {},
+			"startZoomLevel": 9,
+			"placeholder": "translate#common:modules.searchbar.placeholder.addressActiveWFS"
+		},
+		"mapView": {
+			"backgroundImage": "./resources/img/backgroundCanvas.jpeg",
+			"startCenter": [550377, 5803085],
+			"options": [
+				{"resolution":120.1457976146026,"scale":500000,"zoomLevel":-1},
+				{"resolution":66.14579761460263,"scale":250000,"zoomLevel":0}, 
+				{"resolution":26.458319045841044,"scale":100000,"zoomLevel":1}, 
+				{"resolution":15.874991427504629,"scale":60000,"zoomLevel":2}, 
+				{"resolution": 10.583327618336419,"scale":40000,"zoomLevel":3}, 
+				{"resolution":5.2916638091682096,"scale":20000,"zoomLevel":4}, 
+				{"resolution":2.6458319045841048,"scale":10000,"zoomLevel":5}, 
+				{"resolution":1.3229159522920524,"scale":5000,"zoomLevel":6}, 
+				{"resolution":0.6614579761460262,"scale":2500,"zoomLevel":7}, 
+				{"resolution":0.2645831904584105,"scale": 1000,"zoomLevel":8}, 
+				{"resolution":0.13229159522920521,"scale":500,"zoomLevel":9}],
+			"extent": [310000.0, 5700000.0, 625000.4, 6000000.0],
+			"startZoomLevel": 0
+		},
+		"menu": {
+			"tree": {
+				"name": "translate#common:menu.topics"
+			},
+			"utilities": {
+				"name": "translate#common:menu.spatialAnalysis",
+				"icon": "bi-compass",
+				"children": {
+					"decisionSupport": {
+						"name": "translate#additional:modules.tools.decisionSupport.title"
+					},
+					"spatialAccess": {
+						"name": "Räumlicher Zugang"
+					},
+					"physicianSearch": {
+						"name": "Arztsuche"
+					},
+					"accessibilitiesLgln": {
+						"name": "Erreichbarkeiten"
+					},
+					"degreeOfSupply": {
+						"name": "Grad der Versorgung"
+					}
+				}
+			},
+			"tools": {
+				"name": "translate#common:menu.tools.name",
+				"children": {
+					"gfi": {
+						"name": "translate#common:menu.tools.getInfos",
+						"active": true
+					},	
+					"scaleSwitcher": {
+						"name": "translate#common:menu.tools.scaleSwitcher",
+						"icon": "bi-arrows-angle-contract",
+						"renderToWindow": true
+					},
+					"coordToolkit": {
+						"name": "translate#common:menu.tools.coordToolkit"
+					},
+					"measure": {
+						"name": "translate#common:menu.tools.measure"
+					},
+					"draw": {
+						"name": "translate#common:menu.tools.draw"
+					},
+					"fileImport": {
+            			"name": "translate#common:menu.tools.fileImport"
+					},
+					"saveSelection": {
+						"name": "translate#common:menu.tools.saveSelection"
+					}
+				}
+			},
+			"legend": {
+				"name": "common:modules.legend.name",
+				"showCollapseAllButton":true,
+				"showLegend": false
+			},
+			"info": {
+				"name": "translate#common:menu.info",
+				"children": {
+					"staticlinks": [
+						{
+							"name": "Masterportal",
+							"url": "https://masterportal.org"
+						}
+					],
+					"staticlinks2": [
+						{
+							"name": "TUD Geoinformatik",
+							"url": "https://tu-dresden.de/bu/umwelt/geo/geoinformatik"
+						}
+					],
+					"staticlinks3": [
+						{
+							"name": "TUD Landmanagement",
+							"url": "https://tu-dresden.de/bu/umwelt/geo/gi/lm"
+						}
+					],
+					"staticlinks4": [
+						{
+							"name": "Forschungsprojekt WENNDANN",
+							"url": "https://tu-dresden.de/bu/umwelt/geo/gi/lm/forschung/drittmittelprojekte-1/wenndann-weiterentwicklung-des-daseinsvorsorgeatlas-niedersachsen"
+						}
+					]
+				}
+			}
+		},
+		"controls": {
+			"zoom": true,
+			"orientation": {
+				"zoomMode": "always"
+			},
+			"attributions": true,
+			"mousePosition": true
+		}
+	},
+	"Themenconfig": {
+		"Hintergrundkarten": {
+			"Layer": [
+				{
+					"id": "6",
+					"visibility": false
+				},
+				{
+					"id": "7",
+					"visibility": true
+				},
+				{
+					"id": "8",
+					"visibility": false
+				}
+			]
+		},
+		"Fachdaten": 
+			{
+				"Ordner": 
+				[	
+					{
+					"Titel": "Bevölkerung",
+					"Layer":
+						[
+							{
+							"id":"60",
+							"name":["Bevölkerung - Gesamt", "Bevölkerung unter 20 Jahren", "Bevölkerung ab 65 Jahren"],
+							"styles":["Bevoelkerung_Raster_EW_GESAMT", "Bevoelkerung_Raster_EW_unter20", "Bevoelkerung_Raster_EW_ab65"]
+							}
+						]
+					},
+					{
+						"Titel": "Zentrale Orte",
+						"Ordner":
+							[
+								{
+								"Titel":"Grundzentren",
+								"Layer":
+									[
+										{
+											"id":"150",
+											"name":["Grundzentren"],
+											"styles":["Grundzentrum"]
+										},
+										{
+											"id":"151",
+											"name":["Grundzentren mit mittelzentralen Teilfunktionen"],
+											"styles":["Grundzentrum mit mittelzentralen Teilfunktionen"]
+										}
+									]
+								},
+								{
+									"Titel":"Mittelzentren",
+									"Layer":
+										[
+											{
+												"id":"152",
+												"name":["Mittelzentren"],
+												"styles":["Mittelzentrum"]
+											},
+											{
+												"id":"153",
+												"name":["Mittelzentren mit oberzentralen Teilfunktionen"],
+												"styles":["Mittelzentrum mit oberzentralen Teilfunktionen"]
+											}
+										]
+									},
+									{
+										"Titel": "Oberzentren",
+										"Layer": 
+											[
+												{
+													"id":"154",
+													"name":["Oberzentren"],
+													"styles":["Oberzentrum"]
+												}
+											]
+									}
+							]
+						},
+					{
+					"Titel": "Daseinsvorsorgeeinrichtungen",
+					"Ordner": 
+						[
+							{
+							"Titel": "Nahversorgung",
+							"Layer": 
+								[
+								{
+									"id":"120",
+									"name":["Discounter"],
+									"styles":["Infrastruktur_Discounter"]
+								},
+								{
+									"id":"121",
+									"name":["Supermärkte"],
+									"styles":["Infrastruktur_Supermarkt"]
+								},
+								{
+									"id":"122",
+									"name":["Sonstige Lebensmittelgeschäfte"],
+									"styles":["Infrastruktur_Sonstige"]
+								}
+								]
+							},
+							{
+							"Titel": "Gesundheit",
+							"Layer":
+									[
+									{
+										"id":"116",
+										"name":["Apotheken"],
+										"styles":["Infrastruktur_Apotheke"]
+									}
+									],
+							"Ordner": 
+									[
+									{
+										"Titel": "Ambulante Versorgung",
+										"Ordner": 
+												[
+												{
+													"Titel":"Hausärzte",
+													"Layer":
+														[
+														{
+															"id":"70",
+															"name":["Praxisstandorte"],
+															"styles":["Infrastruktur_Aezte_Standard_Hausarzt"]
+														},
+														{
+															"id":"71",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["Infrastruktur_Aezte_Proportional_Hausarzt"]
+														}
+														]
+												},
+												{
+													"Titel":"Augenärzte",
+													"Layer":
+														[
+														{
+															"id":"72",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"73",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Chirurgen oder Orthopäden",
+													"Layer":
+														[
+														{
+															"id":"74",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"75",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"HNO-Ärzte",
+													"Layer":
+														[
+														{
+															"id":"76",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"77",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Hautärzte",
+													"Layer":
+														[
+														{
+															"id":"78",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"79",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Nervenärzte",
+													"Layer":
+														[
+														{
+															"id":"80",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"81",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Frauenärzte",
+													"Layer":
+														[
+														{
+															"id":"82",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"83",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Urologen",
+													"Layer":
+														[
+														{
+															"id":"84",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"85",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Kinder- und Jugendärzte",
+													"Layer":
+														[
+														{
+															"id":"86",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"87",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Psychotherapeuten",
+													"Layer":
+														[
+														{
+															"id":"88",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"89",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Anästhesiologen",
+													"Layer":
+														[
+														{
+															"id":"90",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"91",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Fachinternisten",
+													"Layer":
+														[
+														{
+															"id":"92",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"93",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Kinder- und Jugendpsychiater",
+													"Layer":
+														[
+														{
+															"id":"94",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"95",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Radiologen",
+													"Layer":
+														[
+														{
+															"id":"96",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"97",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Laborärzte",
+													"Layer":
+														[
+														{
+															"id":"98",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"99",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Neurochirurgen",
+													"Layer":
+														[
+														{
+															"id":"100",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"101",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Nuklearmediziner",
+													"Layer":
+														[
+														{
+															"id":"102",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"103",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Pathologen",
+													"Layer":
+														[
+														{
+															"id":"104",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"105",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Physikal.-Rehab.-Mediziner",
+													"Layer":
+														[
+														{
+															"id":"106",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"107",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Strahlentherapeuten",
+													"Layer":
+														[
+														{
+															"id":"108",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"109",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Transfusionsmediziner",
+													"Layer":
+														[
+														{
+															"id":"110",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"111",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"Humangenetiker",
+													"Layer":
+														[
+														{
+															"id":"112",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"113",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												},
+												{
+													"Titel":"MKG-Chirurg",
+													"Layer":
+														[
+														{
+															"id":"114",
+															"name":["Praxisstandorte"],
+															"styles":["infrastruktur_aerzte_standard"]
+														},
+														{
+															"id":"115",
+															"name":["Versorgungsumfang am Standort"],
+															"styles":["infrastruktur_aerzte_proportional"]
+														}
+														]
+												}
+												]
+									},
+									{
+										"Titel": "Stationäre Versorgung",
+											"Layer": 
+												[
+												{
+													"id":"117",
+													"name":["Krankenhäuser"],
+													"styles":["Infrastruktur_Krankenhaus"]
+												}
+												]
+									}
+									]	
+							},
+							{
+								"Titel": "Bildung",
+								"Ordner": 
+									[
+									{
+										"Titel": "Frühkindliche Bildung",
+										"Layer": 
+											[
+											{
+												"id":"130",
+												"name":["Kindertagesstätten"],
+												"styles":["Infrastruktur_Kita"]
+											}
+											]
+									},
+									{
+										"Titel": "Schulbildung",
+										"Layer": 
+											[
+											{
+												"id":"131",
+												"name":["Primärschulen"],
+												"styles":["Infrastruktur_Primarschule"]
+											},
+											{
+												"id":"132",
+												"name":["Sekundarstufe 1"],
+												"styles":["Infrastruktur_Sek1"]
+											},
+											{
+												"id":"133",
+												"name":["Sekundarstufe 2"],
+												"styles":["Infrastruktur_Sek2"]
+											}
+											]
+									}
+									]
+								}
+						]
+					},
+					{
+					"Titel": "Erreichbarkeit von Daseinsvorsorgeeinrichtungen",
+					"Ordner": 
+						[
+							{
+							"Titel": "Erreichbarkeit von Einrichtungen der Nahversorgung",
+							"Ordner": 
+								[
+									{
+									"Titel": "Erreichbarkeit von Discountern",
+									"Layer": 
+										[
+											{
+											"id":"21",
+											"name":["Discounter - ÖPNV Erreichbarkeit in Minuten", "Discounter - PKW Erreichbarkeit in Minuten", "Discounter - PKW Erreichbarkeit in Kilometern"],
+											"styles": ["Versorgungslage_Lebensmittelgeschaefte_OPNV", "Versorgungslage_Lebensmittelgeschaefte_Min", "Versorgungslage_Lebensmittelgeschaefte_km"]
+											}
+										]
+									},
+									{
+									"Titel": "Erreichbarkeit von Supermärkten",
+									"Layer": 
+										[
+											{
+											"id":"22",
+											"name":["Supermärkte - ÖPNV Erreichbarkeit in Minuten", "Supermärkte - PKW Erreichbarkeit in Minuten", "Supermärkte - PKW Erreichbarkeit in Kilometern"],
+											"styles": ["Versorgungslage_Lebensmittelgeschaefte_OPNV", "Versorgungslage_Lebensmittelgeschaefte_Min", "Versorgungslage_Lebensmittelgeschaefte_km"]
+											}
+										]
+									},
+									{
+									"Titel": "Erreichbarkeit von Hof- und Bioläden",
+									"Layer": 
+										[
+											{
+											"id":"23",
+											"name":["Hof- und Bioläden - ÖPNV Erreichbarkeit in Minuten", "Hof- und Bioläden - PKW Erreichbarkeit in Minuten", "Hof- und Bioläden - PKW Erreichbarkeit in Kilometern"],
+											"styles": ["Versorgungslage_Lebensmittelgeschaefte_OPNV", "Versorgungslage_Lebensmittelgeschaefte_Min", "Versorgungslage_Lebensmittelgeschaefte_km"]
+											}
+										]
+									},
+									{
+									"Titel": "Erreichbarkeit von Einrichtungen des Lebensmittelhandwerks",
+									"Layer": 
+										[
+											{
+											"id":"32",
+											"name":["Lebensmittelhandwerk - ÖPNV Erreichbarkeit in Minuten", "Lebensmittelhandwerk - PKW Erreichbarkeit in Minuten", "Lebensmittelhandwerk - PKW Erreichbarkeit in Kilometern"],
+											"styles": ["Versorgungslage_Lebensmittelgeschaefte_OPNV", "Versorgungslage_Lebensmittelgeschaefte_Min", "Versorgungslage_Lebensmittelgeschaefte_km"]
+											}
+										]
+									},
+									{
+									"Titel": "Erreichbarkeit von sonstigen Lebensmittelläden",
+									"Layer": 
+										[
+											{
+											"id":"33",
+											"name":["Sonstige Lebensmittelläden - ÖPNV Erreichbarkeit in Minuten", "Sonstige Lebensmittelläden - PKW Erreichbarkeit in Minuten", "Sonstige Lebensmittelläden - PKW Erreichbarkeit in Kilometern"],
+											"styles": ["Versorgungslage_Lebensmittelgeschaefte_OPNV", "Versorgungslage_Lebensmittelgeschaefte_Min", "Versorgungslage_Lebensmittelgeschaefte_km"]
+											}
+										]
+									}
+								]
+							},
+							{
+							"Titel": "Erreichbarkeit von Einrichtungen der Gesundheit",
+							"Ordner": 
+								[
+									{
+									"Titel": "Erreichbarkeit von Apotheken",
+									"Layer":
+										[
+											{
+											"id":"24",
+											"name":["Apotheken - ÖPNV Erreichbarkeit in Minuten", "Apotheken - PKW Erreichbarkeit in Minuten", "Apotheken - PKW Erreichbarkeit in Kilometern"],
+											"styles": ["Versorgungslage_Apotheken_OPNV", "Versorgungslage_Apotheken_Min", "Versorgungslage_Apotheken_km"]
+											}
+										]
+									},
+									{
+									"Titel": "Erreichbarkeit von Einrichtungen der ambulanten Versorgung",
+									"Ordner":
+										[
+											{
+											"Titel": "Erreichbarkeit von Hausärzten",
+											"Layer":
+												[
+													{
+													"id":"34",
+													"name":["Hausärzte - ÖPNV Erreichbarkeit in Minuten", "Hausärzte - PKW Erreichbarkeit in Minuten", "Hausärzte - PKW Erreichbarkeit in Kilometern"],
+													"styles":["Versorgungslage_Hausarzt_OPNV","Versorgungslage_Hausarzt_Min","Versorgungslage_Hausarzt_km"]
+													}
+												]
+											},
+											{
+											"Titel": "Erreichbarkeit von Augenärzten",
+											"Layer":
+												[
+													{
+													"id":"35",
+													"name":["Augenärzte - ÖPNV Erreichbarkeit in Minuten", "Augenärzte - PKW Erreichbarkeit in Minuten", "Augenärzte - PKW Erreichbarkeit in Kilometern"],
+													"styles":["Versorgungslage_Facharzt_OPNV","Versorgungslage_Facharzt_Min","Versorgungslage_Facharzt_km"]
+													}
+												]
+											},
+											{
+											"Titel": "Erreichbarkeit von Chirurgen und Orthopäden",
+											"Layer":
+												[
+													{
+													"id":"36",
+													"name":["Chirurgen und Orthopäden - ÖPNV Erreichbarkeit in Minuten", "Chirurgen und Orthopäden - PKW Erreichbarkeit in Minuten", "Chirurgen und Orthopäden - PKW Erreichbarkeit in Kilometern"],
+													"styles":["Versorgungslage_Facharzt_OPNV","Versorgungslage_Facharzt_Min","Versorgungslage_Facharzt_km"]
+													}
+												]
+											},
+											{
+											"Titel": "Erreichbarkeit von Frauenärzten",
+											"Layer":
+												[
+													{
+													"id":"37",
+													"name":["Frauenärzte - ÖPNV Erreichbarkeit in Minuten", "Frauenärzte - PKW Erreichbarkeit in Minuten", "Frauenärzte - PKW Erreichbarkeit in Kilometern"],
+													"styles":["Versorgungslage_Facharzt_OPNV","Versorgungslage_Facharzt_Min","Versorgungslage_Facharzt_km"]
+													}
+												]
+											},
+											{
+											"Titel": "Erreichbarkeit von Kinderärzten",
+											"Layer":
+												[
+													{
+													"id":"38",
+													"name":["Kinderärzte - ÖPNV Erreichbarkeit in Minuten", "Kinderärzte - PKW Erreichbarkeit in Minuten", "Kinderärzte - PKW Erreichbarkeit in Kilometern"],
+													"styles":["Versorgungslage_Facharzt_OPNV","Versorgungslage_Facharzt_Min","Versorgungslage_Facharzt_km"]
+													}
+												]
+											},
+											{
+											"Titel": "Erreichbarkeit von Nervenärzten",
+											"Layer":
+												[
+													{
+													"id":"39",
+													"name":["Nervenärzte - ÖPNV Erreichbarkeit in Minuten", "Nervenärzte - PKW Erreichbarkeit in Minuten", "Nervenärzte - PKW Erreichbarkeit in Kilometern"],
+													"styles":["Versorgungslage_Facharzt_OPNV","Versorgungslage_Facharzt_Min","Versorgungslage_Facharzt_km"]
+													}
+												]
+											},
+											{
+											"Titel": "Erreichbarkeit von Psychotherapeuten",
+											"Layer":
+												[
+													{
+													"id":"40",
+													"name":["Psychotherapeuten - ÖPNV Erreichbarkeit in Minuten", "Psychotherapeuten - PKW Erreichbarkeit in Minuten", "Psychotherapeuten - PKW Erreichbarkeit in Kilometern"],
+													"styles":["Versorgungslage_Facharzt_OPNV","Versorgungslage_Facharzt_Min","Versorgungslage_Facharzt_km"]
+													}
+												]
+											},
+											{
+											"Titel": "Erreichbarkeit von Urologen",
+											"Layer":
+												[
+													{
+													"id":"41",
+													"name":["Urologen - ÖPNV Erreichbarkeit in Minuten", "Urologen - PKW Erreichbarkeit in Minuten", "Urologen - PKW Erreichbarkeit in Kilometern"],
+													"styles":["Versorgungslage_Facharzt_OPNV","Versorgungslage_Facharzt_Min","Versorgungslage_Facharzt_km"]
+													}
+												]
+											}
+										]
+									},
+									{
+									"Titel": "Erreichbarkeit von Einrichtungen der stationären Versorgung",
+									"Layer":
+										[
+											{
+											"id":"25",
+											"name":["Krankenhäuser - ÖPNV Erreichbarkeit in Minuten", "Krankenhäuser - PKW Erreichbarkeit in Minuten", "Krankenhäuser - PKW Erreichbarkeit in Kilometern"],
+											"styles": ["Versorgungslage_Krankenhaus_OPNV", "Versorgungslage_Krankenhaus_Min", "Versorgungslage_Krankenhaus_km"]
+											}
+										]
+									}
+								]
+							},
+							{
+							"Titel": "Erreichbarkeit von Einrichtungen der Bildung",
+							"Ordner":
+								[
+									{
+									"Titel": "Erreichbarkeit von Einrichtungen des Primarbereichs",
+									"Layer":
+										[
+											{
+											"id":"26",
+											"name":["Primarbereich - ÖPNV Erreichbarkeit in Minuten", "Primarbereich - PKW Erreichbarkeit in Minuten", "Primarbereich - PKW Erreichbarkeit in Kilometern"],
+											"styles":["Versorgungslage_Primarschule_OPNV", "Versorgungslage_Primarschule_Min", "Versorgungslage_Primarschule_km"]
+											}
+										]
+									},
+									{
+									"Titel": "Erreichbarkeit von Oberschulen",
+									"Layer":
+										[
+											{
+											"id":"27",
+											"name":["Oberschulen - ÖPNV Erreichbarkeit in Minuten", "Oberschulen - PKW Erreichbarkeit in Minuten", "Oberschulen - PKW Erreichbarkeit in Kilometern"],
+											"styles":["Versorgungslage_Sekundarstufe1_ohne_HSR_OPNV", "Versorgungslage_Sekundarstufe1_ohne_HSR_Min", "Versorgungslage_Sekundarstufe1_ohne_HSR_km"]
+											}
+										]
+									},
+									{
+									"Titel": "Erreichbarkeit von Hauptschulen",
+									"Layer":
+										[
+											{
+											"id":"28",
+											"name":["Hauptschulen - ÖPNV Erreichbarkeit in Minuten", "Hauptschulen - PKW Erreichbarkeit in Minuten", "Hauptschulen - PKW Erreichbarkeit in Kilometern"],
+											"styles":["Versorgungslage_Sekundarstufe1_ohne_HSR_OPNV", "Versorgungslage_Sekundarstufe1_ohne_HSR_Min", "Versorgungslage_Sekundarstufe1_ohne_HSR_km"]
+											}
+										]
+									},
+									{
+									"Titel": "Erreichbarkeit von Realschulen",
+									"Layer":
+										[
+											{
+											"id":"29",
+											"name":["Realschulen - ÖPNV Erreichbarkeit in Minuten", "Realschulen - PKW Erreichbarkeit in Minuten", "Realschulen - PKW Erreichbarkeit in Kilometern"],
+											"styles":["Versorgungslage_Sekundarstufe1_ohne_HSR_OPNV", "Versorgungslage_Sekundarstufe1_ohne_HSR_Min", "Versorgungslage_Sekundarstufe1_ohne_HSR_km"]
+											}
+										]
+									},
+									{
+									"Titel": "Erreichbarkeit von Gymnasien",
+									"Layer":
+										[
+											{
+											"id":"30",
+											"name":["Gymnasien - ÖPNV Erreichbarkeit in Minuten", "Gymnasien - PKW Erreichbarkeit in Minuten", "Gymnasien - PKW Erreichbarkeit in Kilometern"],
+											"styles":["Versorgungslage_Sekundarstufe1u2_mit_HSR_OPNV", "Versorgungslage_Sekundarstufe1u2_mit_HSR_Min", "Versorgungslage_Sekundarstufe1u2_mit_HSR_km"]
+											}
+										]
+									},
+									{
+									"Titel": "Erreichbarkeit von Gesamtschulen",
+									"Layer":
+										[
+											{
+											"id":"31",
+											"name":["Gesamtschulen - ÖPNV Erreichbarkeit in Minuten", "Gesamtschulen - PKW Erreichbarkeit in Minuten", "Gesamtschulen - PKW Erreichbarkeit in Kilometern"],
+											"styles":["Versorgungslage_Sekundarstufe1u2_mit_HSR_OPNV", "Versorgungslage_Sekundarstufe1u2_mit_HSR_Min", "Versorgungslage_Sekundarstufe1u2_mit_HSR_km"]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+					"Titel":"Ambulante Bedarfsplanungsbereiche",
+					"Ordner":
+						[
+							{
+							"Titel":"Hausärztliche Planungsbereiche",
+							"Layer":
+							[
+								{
+								"id":"50",
+								"name":["Hausärztliche Planungsbereiche", "Versorgungsgrad Hausärzte ohne Ermächtigte"],
+								"styles":["Planungsbereiche_VE1_Standard", "Planungsbereiche_Versorgungsgrad_75_100_110"],
+								"legendURL":["ignore", ""]
+								}
+							]
+							},
+							{
+							"Titel":"Planungsbereiche Versorgungsebene 2 - Allgemeine fachärztliche Versorgung",
+							"Layer":
+							[
+								{
+								"id":"51",
+								"name":["Planungsbereiche Versorgungsebene 2", "Versorgungsgrad Beispieldaten"],
+								"styles":["Planungsbereiche_VE2_Standard", "Planungsbereiche_Versorgungsgrad_75_100_110"],
+								"legendURL":["ignore", ""]
+								}
+							]
+							},
+							{
+								"Titel":"Planungsbereiche Versorgungsebene 3 - Spezialisierte fachärztliche Versorgung",
+								"Layer":
+								[
+									{
+									"id":"52",
+									"name":["Planungsbereiche Versorgungsebene 3", "Versorgungsgrad Beispieldaten"],
+									"styles":["Planungsbereiche_VE3_Standard", "Planungsbereiche_Versorgungsgrad_75_100_110"],
+									"legendURL":["ignore", ""]
+									}
+								]
+								}
+						]
+					}
+				]
+			}
+	}
+}

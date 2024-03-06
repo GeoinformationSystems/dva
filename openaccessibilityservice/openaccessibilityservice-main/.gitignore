@@ -1,0 +1,28 @@
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
+
+# ors
+*ors.run
+
+cgiar_provider
+graphs
+target
+build/
+logs/
+cgiar_cache
+/files/*.csv
+src/main/files/*.pbf
+!src/main/files/hannover.pbf
+/files/*
+
+# vs-code
+.vscode
