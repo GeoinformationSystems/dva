@@ -20,6 +20,8 @@ link:     style.css
 
 # Der Digitale Versorgungsatlas (DVA)
 
+Die Inhalte sind als aufbereitet als Foliensatz auch hier erhätlich: [Der DVA als  ] (https://raw.githubusercontent.com/GeoinformationSystems/dva/main/Readme.md#1) [https://liascript.github.io/course/?](https://raw.githubusercontent.com/GeoinformationSystems/dva/main/Readme.md#1)https://raw.githubusercontent.com/GeoinformationSystems/dva/main/Readme.md#1
+
 <h4>Was ist der DVA?</h4>
 
                           {{0-4}}
