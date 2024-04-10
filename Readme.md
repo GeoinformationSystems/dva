@@ -20,7 +20,9 @@ link:     style.css
 
 # Der Digitale Versorgungsatlas (DVA)
 
-Die Inhalte sind als aufbereitet als Foliensatz auch hier erhätlich: ([Der DVA als Foliensatz] (https://liascript.github.io/course/?https://raw.githubusercontent.com/GeoinformationSystems/dva/main/Readme.md))
+Die Inhalte sind als aufbereitet als Foliensatz auch hier erhätlich: Der DVA als Foliensatz [DVA Foliensatz]
+
+[DVA Foliensatz]: https://liascript.github.io/course/?https://raw.githubusercontent.com/GeoinformationSystems/dva/main/Readme.md
 
 
 
