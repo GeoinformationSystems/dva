@@ -3,7 +3,7 @@ author:   Falko Krügel
 
 email:    faklo.kruegel@tu-dresden.de
 
-version:  0.0.1
+version:  0.0.2
 
 language: de
 
@@ -17,15 +17,21 @@ link:     style.css
 @end
 
 -->
+Die Inhalte sind als aufbereitet als Foliensatz auch hier erhätlich: [DVA Foliensatz]
+
+[DVA Foliensatz]: https://liascript.github.io/course/?https://raw.githubusercontent.com/GeoinformationSystems/dva/main/Readme.md
+
 
 # Der Digitale Versorgungsatlas (DVA)
 
 <h4>Was ist der DVA?</h4>
 
+
+
                           {{0-4}}
 ***********************************************************
 
-Der _Digitale Versorgungsatlas_, kurz _DVA_, ist eine **Webanwendung** zur Einsicht von Versorgungsinfrastrukuten der Daseinsvorsorge im Bundesgebiet und zur Betrachtung von Versorgungssituationen.
+Der _Digitale Versorgungsatlas_, kurz _DVA_, ist eine **Webanwendung** zur Einsicht von Versorgungsinfrastrukturen der Daseinsvorsorge im Bundesgebiet und zur Modellierung, Analyse und Bewertung von Versorgungssituationen.
 
 ***********************************************************
 
@@ -44,15 +50,15 @@ Der _DVA_ ist aber auch ein **Methodenservice**, mit dessen Hilfe durch eine Arc
 
 Dr. Stephan Mäs - Professur für Geoinformatik
 
-M.Sc. Falko Krügel - Professur für Geoinformatik
+M. Sc. Falko Krügel - Professur für Geoinformatik
 
-B.Sc. Erik Buthmann - Professur für Geoinformatik
+B. Sc. Erik Buthmann - Professur für Geoinformatik
 
-B.Sc. Paul Hindorf - Professur für Geoinformatik
+B. Sc. Paul Hindorf - Professur für Geoinformatik
 
 TU Dresden
 
-_Stand der Dokumentation: 20.03.2024_
+_Stand der Dokumentation: 15.04.2024_
 
 
 
@@ -62,11 +68,10 @@ _Stand der Dokumentation: 20.03.2024_
                           {{3-4}}
 ***********************************************************
 
-Wenn du ein Anwender bist, sind für dich folgende Punkte interessant:
+Wenn du ein _Anwender_ bist, sind für dich folgende Punkte interessant:
 
+<h4>1.  Die DVA-Webanwendung</h4> (#2)
 
-
-1.  Die DVA-Webanwendung
 
 - Themen (Karteninhalte der Anwendung)
 
@@ -76,16 +81,18 @@ Wenn du ein Anwender bist, sind für dich folgende Punkte interessant:
 
   - Räumlicher Zugang
 
-2. **Zugriff auf die Methoden - die ArcGIS Toolbox DVA_Tools**
+<h4>2.  Die DVA-ArcGIS-Toolbox</h4>
 
 - Enhanced 2SFCA
 
 - Isochrones
 
+- KNearest
+
 - Matrix
 
 
-Wenn du Entwickler bist, sind für dich folgende Punkte interessant:
+Wenn du _Entwickler_ bist, sind für dich folgende Punkte interessant:
 
 1. Architektur
 
@@ -106,29 +113,177 @@ Bereitstellung bei Produktivgang
 Bereitstellung bei Produktivgang
 
 # Die DVA-ArcGIS-Toolbox
+
+Zusammen mit [ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview) (_getestet mit Version 3.2.2_) erlaubt die ArcGIS-Toolbox den Zugriff auf Dienste und Methoden die bei der Umsetzung von Versorgungsanalysen verschiedenster Art unterstützen.
+
+## Download und Einbindung
+
+<br>
+
+**Download:** Die Toolbox kann durch den [Shapepoint](https://datashare.tu-dresden.de/s/GArikyxRo3dr3L5) der TU-Dresden heruntergeladen werden.
+
+**Einbindung:** Für die Einbindung der ArcGIS-Toolbox in ArcGIS hilft diese offizielle [Anleitung](https://pro.arcgis.com/de/pro-app/latest/help/projects/connect-to-a-toolbox.htm).
+
+
+## Enhanced2SFCA
+
+Sicht auf die Toolbox mit einem möglichen Ergebnis für ein Einzugsgebiet:
+
+![Beispielhafte Nutzung des Tools](doc\pic\ToolboxE2SFCA.png "Abb.: Beispielhafte Nutzung des Tools") <!--- style "with:200px" --->
+
+
+
+
+### Allgemeines zur Nutzung
+
+Wesentlich für die Qualität des Analyseergebnisses sind die Eingangsdaten. Je nach technischer Ausrichtung können diese im Bereich der Versorgungsanalysen sehr unterschiedlich sein.
+
+Für die Berechnung der Enhanced2SFCA sollten folgende Eingabedaten in folgender Strukutr vorliegen:
+
+- **Nachfragestandorte oder -flächen**
+
+  - möglichst kleinräumlich als Punkt- oder Shapefeatureclass (z.B. Punktfeatureclass mit Werteverteilungen, Gemeindekonturen mit Kaufkraftpotenzial, 100x100m Zensusgrid mit Bevölkerungsdaten)
+
+  - idealerweise halten diese per Attributtabelle ein Nachfragepotential vor (z. B. Einwohneranzahl, Kaufkraft, Morbidität)
+
+<br>
+
+- **Angebotsstandorte /Dienstleister**
+
+  - Punktfeatureclass
+
+  - idealerweise halten diese per Attributtabelle ein Auslastungs, Verfügbarkeits-  oder Kapazitätskennzahl vor (z. B. Anzahl tätiger Ärzte am Standort, Verkaufsfläche)
+
+<br>
+Optional, jedoch empfohlen, sind Gewichtungsfelder die z. B. die Kapazitätskennziffern bei Anbietern (Zahl der Ärzte etc.) oder die Menge der Nachfrager modellieren (z.B. Zahl der Einwohner).
+
+<br>
+<br>
+<h4>Dieses Kapitel stellt keine methodischen Grundlagen vor. Für methodische Grundlagen bitte Kapitel **Die Methode zur Versorugngsanalyse** zurhilfe nehmen.</h4>
+
+### Grundlegende Parameter
+
+<h4>URL</h4>
+
+Zugriff auf den Methodenserver der die Berechnung der räumlichen Zugägnlichkeit übernimmt. Die URL ist über falko.kruegel@tu-dresden.de einzuholen.
+
+<br>
+
+<h4>Demand</h4>
+Punkt- oder Shapefeatureclass welches die Nachfragepotenziale enthält. Bitte berücksichtigen: Eine große Fläche und viele Angebots- und Nachfragestandorte bedingen die Berechnung vieler/großer Einzugsgebiete was die Berechnungszeit beeinflusst. Mehr als 1. Mio Routenabfragen können aktuell nicht zur gleichen Zeit berechnet werden.
+
+<br>
+
+<h4>Demand Weight</h4>
+
+Gewichtungsparameter zur Modellierung des Nachfrageverhaltens. Idealerweise als Short/Long/Float/Double hinterlegen.
+
+Erfolgt keine Angabe des Nachfragegewichtes, so wird jedes Feature hinsichtlich seiner Nachfrage als gleichwertig angesehen.
+
+<br>
+
+<h4>Supply</h4>
+
+Punkt- oder Shape-Featureclass das ein Angebotspotenzial enthält.
+Angebots- und Nachfragestandorte bedingen die Berechnung vieler/großer Einzugsgebiete was die Berechnungszeit beeinflusst. Mehr als 1. Mio Routenabfragen können aktuell nicht zur gleichen Zeit berechnet werden.
+
+<br>
+
+<h4>Supply Weight</h4>
+
+Gewichtungsparameter zur Modellierung des Angebotspotenzials. Idealerweise als Short/Long/Float/Double hinterlegen.
+
+
+Erfolgt keine Angabe des Nachfragegewichts, so wird jedes Feature hinsichtlich seiner Angebotskapazität als gleichwertig angesehen.
+
+<br>
+
+<h4>Distance Decay</h4>
+
+Mit den Abgewichtungstypen wird die Bedeutung der Entfernung zwischen Angebots- und Nachfragestandort definiert.
+
+<br>
+
+Beispiel 1: Bei einer binären Modellierung wird bis zu einem individuell festgelegten Entfernungsschwellenwert davon ausgegangen, dass die Versorgungsleistung des Anbieteres innerhalb des Schwellwertes gleichgeartet ist.
+
+Beispiel 2: Bei einer hybriden Modellierung werden mehrere (beliebig viele) Entfernungsschwellenwerte und ihre Bedeutung zur Versorgung definiert.
+
+<br>
+
+Folgende Wahlmöglichkeiten bestehen:
+
+* **binary** - Binäre Abgewichtung $f(d_{ij}) = 1$
+* **linear** - Liniare Abgewichtung $f(d_{ij}) = 1 - \frac{d_{ij}}{d_{max}}$ von 1 bis 0, der maximalen Entfernung
+* **exponential** - Exponentielle Abgewichtung $f(d_{ij}) = e^{-d_{ij} \delta}$ mit Impedanzfaktor $\delta = -\frac{log(0.01)}{d_{max}}$
+* **gaussian** - Abgewichtung entsprechend der gaussischen Normalverteilung $f(d_{ij}) = e^{\frac{-d_{ij}^2}{\delta}}$ mit Impedanzfaktor $\delta = -\frac{d_{max}^2}{log(0.01)}$
+* **inverse-power** - Inverse Distanzabgewichtung $f(d_{ij}) = d_{ij}^{-\delta}$ mit Impedanzfaktor $\delta = log_{d_{max}}(100)$
+* **kernel-density** - density weighting $f(d_{ij}) = 0.75 * (1 - (\frac{d_{ij}}{d_{max}})^2)$
+* **hybrid** - Individuelle Abgewichtungsfunktion $f(d_{max, n-1} < d_{ij} < d_{max, n}) = w_n$ mit eigens gewählten Entfernungsschwellwerten $d_{max, n}$ und den für jeden Schwellwert festgelegten Gewicht $w_n$
+
+  * Mit dieser Wahl werden Eingabefaktoren für _Ranges_ und _Range-Faktors_ geöffnet. In _Ranges_  werden die individuellen Entfernungsschwellwerte hinterlegt. Entsprechend der Reihenfolge kann unter _Range-Faktors_ die individuell festgelegte Entfernungsabgewichtung hinterlegt werden.
+
+* **polynom** - Gewichtung nach einer polynomischen Formel $f(d_{ij}) = a_0 d_{ij}^{n} + a_1 d_{ij}^{n-1} + ... + a_n$ mit individuellen Coeffizienten $a_0, a_1, ..., a_n$ des Entfernungsfaktors
+
+  * Mit dieser Wahl werden Eingabefaktoren für _Polynom Coefficients_ geöffnet. Mit der polynomischen Abgewichtung kann eine eigene Abgewichtungsfunktion definiert werden.
+
+
+<br>
+
+<span style="color: #8B0000;font-weight: bold;"> Bitte beachten: Viele der Eingaben erfordern die Eingabe von Entfernungsparamtern (Travelmode). Die Entfernung kann per Zeit (in Sekunden) oder Entfernung (in Metern) hinterlegt werden. Dokumentation im nächsten Kapitel "Erweiterte Einstellungen".</span>
+
+<br>
+
+### Erweiterte Parameter
+Weitere Einstellung für genauere Festsetzung des Routings.
+
+<br>
+
+<h4>Profile</h4>
+Reiseprofile über die das Routing erfolgt
+
+<br>
+
+<h4>Travelmode</h4>
+Angabe, ob die Distanzmessung per Zeit- oder Entfernungseinheiten erfolgen sollte:
+
+*	time: Angabe erfolgt in Sekunden
+*	distance: Angabe erfolgt in Metern
+
+<br>
+
+<h4>Locationtype</h4>
+Sollen die Routenpfade von Startpunkt zum Zielpunkt (start) oder oder vom Zielpunkt zum Startpunkt (destination) erfolgen?
+
+Hinweis: Im Einzelfall, kann dies entscheidend sein, wenn z. B. Einbahnstraßen oder Straßen mit verschiedenen Geschwindigkeitsbegrenzungen je Fahrtrichtung gelten. Zumeist wirken sich solche Einstellungen auf die Straßennaviation im Individualverkehr aus, jedoch weniger bei der Modellierung einer großen Menge an Routen wie in diesen Versorgungsmodellierungen.
+
+<br>
+
+<h4>Avoid Features</h4>
+Gibt es Straßenverbindungen, die nicht beim Routing berücksichtig werden sollen?
+
+*	highways: Autobahnen werden vermieden
+*	tollways: Kostenpflichtige Straßen werden vermieden
+*	ferries: Fähren werden vermieden
+
+<br>
+
+<h4>Avoid Polygons</h4>
+Angabe eines Polygons, in dem ein Routing nicht erfolgen sollte.
+
+<br>
+
+<h4>Vehicle Type</h4>
+Die Routingergebnisse hängen von dem Medium ab, mit dem gereist wird. So sind beispielsweise LKW's (HGV)  bei der Routenwahl limitiert.
+Bei fehlender Angabe wird immer "driving_car" genutzt.
+
+<br>
+
+## Isochrones
 Bereitstellung bei Produktivgang
-## Einzugsgebiete
+## KNearest
 Bereitstellung bei Produktivgang
-## Distanzmatritzen
+## Matrix
 Bereitstellung bei Produktivgang
-## Räumlicher Zugang
-Inhalt in Arbeit
-Die Bestimmung der räumlichen "Zugänglichkeit" eines bestimmten Dienstleisters (Angebotsstandort) für Wohnorte der Bevölkerung (Nachfragestandorte) mit _2SFCA-Methodengruppen_ bzw. _gravitationsbasierten Zugangsanalysen_ ist komplexer als die üblichen geographischen Fragestellungen wie:
-
-- Frage nach dem Einzugsgebiet: Wohnt eine bestimmte Person in einem Einzugsgebiet eines Dienstleisters? (Antwort ja/nein)
-
-- Frage nach der Distanz(-matrix): Welche Distanz (Zeit- oder Entfernungsmaße wie Minuten oder Kilometer) muss zwischen Angebots- und Nachfragstandort überwunden werden? (Antwort Maßzahl in Zeit oder Minuten)
-
-Diese eher üblichen geographischen Analysen beantworten nicht die Frage ob der Dienstleister für die (oder den einen speziellen) Nachfrager überhaupt verfügbar ist (Frage nach einer Dimension der Zugänglichkeit im Zuge von Auslastung/Accessibility in the course of capacity utilisation). D.h. die obigen Fragen beantworten nicht die lokale Nachfrage nach diesem Anbieter. Luo und Qi entwickelten die Enhanced Two-Step Floating Catchment Area (E2SFCA)-Methode, um eine Messung zu ermöglichen, die intuitiv sinnvoll ist, um den räumlichen Zugang zu (Gesundheits-)Dienstleistern zu bestimmen.
-
-Für die Berechnung der Enhanced2SFCA sollten folgende Eingabedaten vorliegen:
-
-Nachfragestandorte - oder -flächen (möglichst klein räumlich als Punkt- oder Shapefeatureclass)
-
-Angebotsstandorte /Dienstleister
-
-Optional sind Gewichtungsfelder die z. B. die Kapazitätskennziffern bei Anbietern (Zahl der Ärzte etc.) oder die Menge der Nachfrager modellieren (z.B. Zahl der Einwohner).
-
 
 # Die Methoden zur Versorgungsanalyse
 ## Einzugsgebiete und Erreichbarkeiten
@@ -136,11 +291,11 @@ Optional sind Gewichtungsfelder die z. B. die Kapazitätskennziffern bei Anbiete
 
 <h4>Reicht die Ermittlung von Reisezeit oder Einzugsgebieten für Versorgungsanalysen denn nicht mehr aus?</h4>
 
-                          {{1-1}}
+                          {{1-2}}
 ***********************************************************
 Leider nein!
 
-Wir benötigen mehr, als die einfachen Reisezeiten von einem Angebotsort zu einem Nachfrageort als uns die Ermittlung von Reisezeiten über Einzugsgebiete oder auch Distanzmatrizen liefern würden.
+Wir benötigen mehr, als die einfachen Reisezeiten von einem Angebotsort zu einem Nachfrageort oder die Feststellung der Größe eines Einzugsgebietes liefern würden.
 
 Diese Art der Analysen sagen uns zwar, **ob** ein Anbieter _theoretisch_ zu erreichen ist, sie sagen aber nicht, ob er _praktisch_ für alle Nachfrager zugänglich ist. In Englischen wird dies unter dem Begriff "*accessibility*" geführt, worauf wir später eingehen.
 
@@ -155,15 +310,20 @@ Diese Art der Analysen sagen uns zwar, **ob** ein Anbieter _theoretisch_ zu erre
 
                           {{1-9}}
 ***********************************************************
-Sehr allgemein formuliert: Bei einem Einzugsgebiet handelt es sich um ein geographischen Raum, der um einen definierten Einflussbereich eines bestimmten Objektes liegt.
+Sehr allgemein formuliert: Bei einem Einzugsgebiet handelt es sich um ein geographischen Raum, der sich um einen definierten Einflussbereich eines bestimmten Objektes ausbreitet.
 
-Um dem jedoch eine etwas schärfere Definition zu geben, die sich eignet um antrophogeograhische Fragestellungen, wie z. B. aus der Versorgungsforschung, zu beantworten, konretisieren wir diese Definition:
+Um jedoch eine etwas schärfere Definition zu geben, die für die Beantwortung anthropogeographischer Fragestellungen, etwa aus der Versorgungsforschung, geeignet ist, werden wir diese Definition konkretisieren:
+
+<br>
+
 ***********************************************************
 
                           {{2-9}}
 ***********************************************************
 
-Ein **Einzugsgebiet**, umschließt einen Dienstleistungsort einen geographischen Raum, welches den Einflussbereich der Dienstleitung definiert. Die Beschreibung des umschlossenen Raumes erfolgt mit Entfernungs- oder Zeiteinheiten und wird über Luftlinie (*radiales Einzugsgebiet*) oder auch über ein Konstrukt aus Wegebeziehungen, z.B. *Straßennetzwerk* gebildet.
+Ein **Einzugsgebiet**, umschließt einen geographischen Raum um einen Dienstleistungsort, welches den Einflussbereich der Dienstleitung definiert. Die Beschreibung des umschlossenen Raumes erfolgt mit Entfernungs- oder Zeiteinheiten und wird über Luftlinie (*radiales Einzugsgebiet*) oder auch über ein Konstrukt aus Wegebeziehungen, z.B. *Straßennetzwerk* gebildet.
+
+<Br>
 
 ***********************************************************
 
@@ -171,7 +331,9 @@ Ein **Einzugsgebiet**, umschließt einen Dienstleistungsort einen geographischen
 ***********************************************************
 Die **Einzugsgebietsanalyse** ermöglicht es, die Eigenschaften eines oder mehrerer Einzugsgebiete mittels geographischer Analysemethoden zu beschreiben. Es ist beispielsweise möglich, die Größe (*Fläche, Ausdehnungseigenschaften, Topologie*) des Einzugsgebietes zu identifizieren oder die darin enthaltenen Elemente (*Potentiale*) zu ermitteln.
 
-![Beispielhaftes Einzugsgebiet](doc/pic/chatchment_explainer.jpg "Abb.: Um einen Dienstleistungsort gebildetes radiales Einzugegebiet (rote Linie) und netzwerkabhäniges Einzugsgebiet (blaue Fläche).")
+![Beispielhaftes Einzugsgebiet](doc/pic/chatchment_explainer.jpg "Abb.: Um einen Dienstleistungsort gebildetes radiales Einzugegebiet (rote Linie) und netzwerkabhäniges Einzugsgebiet (blaue Fläche).") <!--- style "with:200px" --->
+
+<Br>
 
 ***********************************************************
 
@@ -191,13 +353,13 @@ Gehen wir in unserem Beispiel ferner von folgemdem aus:
 
 <span style="color: #335A17;font-weight: bold;"> Angebot:</span>.
 
-Das Angebot einer Dienstleistung wird durch eine hausärztliche Einzelpraxis repräsentiert, deren Fachpersonal ca. 2.000 Einwohner (und damit in etwa 1.600 zu behandelnde Personen in einem Quartal) versorgen kann.
+Das Angebot einer Dienstleistung wird durch eine hausärztliche Einzelpraxis repräsentiert, deren Fachpersonal ca. 2.000 Einwohner versorgen kann (und da nicht alle Einwohner jedes Quartal zum Arzt gehen handelt es sich um etwa 1.600 zu behandelnde Personen in einem Quartal).
 
 <span style="color: #B2B2B2;font-weight: bold;"> Nachfrage:</span>
 
 Ein 100x100m Raster repräsentiert die Nachfragestandorte. Die Höhe der Nachfrage nach einem ärztlichen Angebot wird durch die Bevölkerungszahl am Wohnort anhand der innenstehenden Zahl repräsentiert.
 
-![Beispielhaftes Untersuchungsgebiet](doc/pic/suppyer_demander.jpg "Abb.: Angebotsstandort (grüner Punkt) in einer Wohngebietslage in Hannover mit Wohnortbevölkerung als Nachfragestandorte (graues Raster)")<!--- style "with:100px" --->
+![Beispielhaftes Untersuchungsgebiet](doc/pic/suppyer_demander.jpg "Abb.: Angebotsstandort (grüner Punkt) in einer Wohngebietslage in Hannover mit Wohnortbevölkerung als Nachfragestandorte (graues Raster)") <!--- style "with:100px" --->
 
 ***********************************************************
 
@@ -215,7 +377,7 @@ Welche Nachfragestandorte (Bevölkerung) nach einer Dienstleistung (hausärztlic
 
 Wie groß ist das Nachfragepotential für diesen Standort?
 
-![Beispielhaftes Einzugsgebiet](doc/pic/catchment120_supplyer.jpg "Abb.: 2 Min-PKW-Einzugsgebiet um den Angebotsstandort (grüner Punkt)")<!--- style "with:100px" --->
+![Beispielhaftes Einzugsgebiet](doc/pic/catchment120_supplyer.jpg "Abb.: 2 Min-PKW-Einzugsgebiet um den Angebotsstandort (grüner Punkt)") <!--- style "with:200px" --->
 
 
 ***********************************************************
@@ -230,22 +392,26 @@ Wie groß ist das Nachfragepotential für diesen Standort?
 
 Wenn wir nun die Bevölkerung im Einzugsgebiet aufsummieren, kommen wir zu einer recht erstaunlichen Menge von 23.211 Einwohnern, die für die Einzelpraxis potentiell zu behandelnde Personen sein können.
 
-
 Folgende Aussage können wir treffen:
 
 **Binnen 2 Minuten per PKW-Fahrzeit erreichen mehr als 23.000 Einwohner eine Arztpraxis.**
+
+<Br>
+
 ***********************************************************
 
                       {{8-9}}
 ***********************************************************
 Und damit sind wir bei den Grenzen!
 
-Nur weil wir das Versorgungsgebiet einer Infrastruktur und das darin enthaltene Nachfragepotenzial kennen, ist die Situation oder Qualität der Versorung defr Einwohner noch lange nicht bekannt.
+Nur weil wir das Versorgungsgebiet einer Infrastruktur und das darin enthaltene Nachfragepotenzial kennen, ist die Situation oder Qualität der Versorung defr Einwohner noch lange nicht bekannt. Da wir wissem, das die hausärztliche Praxis nur ca. 2.000 Einwohner versorgt, können wir noch keine Aussagen über die Versorgungssituation aller 23.000 Einwohner treffen.
 
 <h4> Grenzen von Einzugsgebietsanalysen:</h4>
 Diese geographischen Analysen beantworten die Fragen ob eine Dienstleitung **erreichbar** ist. Ein Verständnis, ob eine Dienstleitung für die Nachfragenden überhaupt verfügbar ist, lässt damit nicht gewinnen (Frage nach einer Dimension der Zugänglichkeit im Zuge von Auslastung).
 
 Wirdmen wir uns daher im nächsten Kapitel den gravitationsbasierten Analysemethoden
+
+<Br>
 
 
 ***********************************************************
@@ -255,7 +421,7 @@ Wirdmen wir uns daher im nächsten Kapitel den gravitationsbasierten Analysemeth
 
 {{1-10}}
 ***********************************************************
-Sogenannte gravitationsmodelle werden in der räumlichen Planung verwendet, um bestimmte Verhaltensweisen vorherzusagen und zu beschreiben, die sich ähnlich der in den Gravitationsgesetzen von Isaac Newton beschriebenen Gravitationsinteraktion wiederfinden.
+Sogenannte Gravitationsmodelle werden in der Raumplanung verwendet, um bestimmte Verhaltensweisen vorherzusagen und zu beschreiben, die der in den Gravitationsgesetzen von Isaac Newton beschriebenen Gravitationswechselwirkung ähneln.
 
 Im Allgemeinen enthalten die sozialwissenschaftlichen Modelle einige Elemente von Masse und Entfernung, was ihnen die Metapher der physikalischen Schwerkraft verleiht. Ein Gravitationsmodell liefert eine Schätzung des Volumens der Ströme von z. B. Waren, Dienstleistungen oder Menschen zwischen zwei oder mehreren Orten.
 ***********************************************************
@@ -283,7 +449,7 @@ Die Herleitung der E2SFCA unterehmen wir wie folgt:
 4. Berechne das Verhältnis (_Ratio_) _R<sub>j</sub>_  zwischen des Versorgungsstandortes und der jeweiligen Bevölkerung innerhalb des Einzugsgebietes.   
 
 
-![2sfcaexplainer_step1_1](doc\pic\2sfcaexplainer_step1_1.gif "Abb.: 1. Schritt der 2sfca-Methode - Verhältnis von Angebot (P<sub>k</sub>) und Bevölkerung (P<sub>k</sub>) ermitteln.")
+![2sfcaexplainer_step1_1](doc\pic\2sfcaexplainer_step1_1.gif "Abb.: 1. Schritt der 2sfca-Methode - Verhältnis von Angebot (P<sub>k</sub>) und Bevölkerung (P<sub>k</sub>) ermitteln.") <!--- style "with:200px" --->
 
 ***********************************************************
 
@@ -292,7 +458,7 @@ Die Herleitung der E2SFCA unterehmen wir wie folgt:
 
 5. Der erste Teilschritt ist für alle Standorte wiederholbar. _Bemerkung: Berücksichtige, dass durch diese Schritte eine Gewichtung von Kapazitätsmerkmalen an einem Versorgungsstandort möglich ist, wie am Standort von S<sub>2</sub>, S<sub>3</sub> und S<sub>4</sub> sichtbar wird._
 
-![2sfcaexplainer_step1_2](doc\pic\2sfcaexplainer_step1_2.gif "Abb.: 1. Schritt der 2sfca-Methode - Wiederholung für alle weitern Standorte.")
+![2sfcaexplainer_step1_2](doc\pic\2sfcaexplainer_step1_2.gif "Abb.: 1. Schritt der 2sfca-Methode - Wiederholung für alle weitern Standorte.") <!--- style "with:200px" --->
 
 ***********************************************************
 
@@ -300,16 +466,16 @@ Die Herleitung der E2SFCA unterehmen wir wie folgt:
 ****
 6. Suche für jeden Bevölkerungsstandort der innerhalb des Einzugsgebietesschwellwertes _d<sub>0</sub>_ liegt, alle erreichbaren Versorgungsstandorte und addiere deren unter 4. genannte Verhältnis _R<sub>j</sub>_ der Versorgungsstandortes und der jeweiligen Bevölkerung.
 
-![2sfcaexplainer_step2](doc\pic\2sfcaexplainer_step2.gif "Abb.: 2. Schritt der 2sfca-Methode - Wiederholung für alle weitern Standorte.")
+![2sfcaexplainer_step2](doc\pic\2sfcaexplainer_step2.gif "Abb.: 2. Schritt der 2sfca-Methode - Wiederholung für alle weitern Standorte.") <!--- style "with:200px" --->
 ***********************************************************
 
 {{7-10}}
 ***********************************************************
-Nach Toblers (1970) erstem Gesetz der Geographie _hängt alles mit allem Zusammen, aber nähere Sachen hängen stärker voneinander ab, als weiter entfernte_. Noch wird das durch unserer Vorgehen noch nicht berücksichtigt.
+Nach Toblers (1970) erstem Gesetz der Geographie _hängt alles mit allem zusammen, aber nähere Sachen hängen stärker voneinander ab, als weiter entfernte_. Noch wird das durch unserer Vorgehen keine Berücksichtigung.
 
 Wir implementieren daher noch eine entfernungsabhängige Gewichtungsfunktion, damit das "Enhanced" in _E2SFCA_ seinem Namen gerecht wird.
 
-![2sfcaexplainer_enhanced](doc\pic\2sfcaexplainer_enhanced.gif "Abb.: Text.")
+![2sfcaexplainer_enhanced](doc\pic\2sfcaexplainer_enhanced.gif "Abb.: Darstellung verschiedener Entfernungsabgewichtung die eine Abnahe der Versorgungsleistung von S über die Entfernung d verdeutlichen.") <!--- style "with:200px" --->
 
 ***********************************************************
 
@@ -322,7 +488,7 @@ Die Art und Weise der Abgewichtung sowie die Wahl der Einzugsgebietsgröße sind
 
 {{9-10}}
 ***********************************************************
-Im nächsten Kapitel betrachten wir diese Abfolge noch einmal. Nun aber zur besseren Nachvollziehbarkeit mit dem Praxisbeispiel und Karten die schon aus der Erläuterung des Kapitels zur Einzugsgebieten bek
+Im nächsten Kapitel betrachten wir diese Abfolge noch einmal. Nun aber zur besseren Nachvollziehbarkeit mit dem Praxisbeispiel und Karten die schon aus der Erläuterung des Kapitels zur Einzugsgebieten bekannt sind.
 ***********************************************************
 
 {{10-10}}
@@ -334,211 +500,32 @@ Im nächsten Kapitel betrachten wir diese Abfolge noch einmal. Nun aber zur bess
 
 {{1-2}}
 ***********************************************************
-Sogenannte gravitationsmodelle werden in der räumlichen Planung verwendet, um bestimmte Verhaltensweisen vorherzusagen und zu beschreiben, die sich ähnlich der in den Gravitationsgesetzen von Isaac Newton beschriebenen Gravitationsinteraktion wiederfinden.
-
-Im Allgemeinen enthalten die sozialwissenschaftlichen Modelle einige Elemente von Masse und Entfernung, was ihnen die Metapher der physikalischen Schwerkraft verleiht. Ein Gravitationsmodell liefert eine Schätzung des Volumens der Ströme von z. B. Waren, Dienstleistungen oder Menschen zwischen zwei oder mehreren Orten.
+Ergänzung folgt
 ***********************************************************
 {{2-4}}
 ***********************************************************
-Die Berücksichtung einer "Anziehungskraft" ist eine wichtige Vorsetzung, um Versorgung besser zu verstehen. Wir konzentrieren uns im folgenden auf die 2SFCA-Methodengruppe (engl. Two-step floating catchment area method). Um uns der Metode zu nähern gehen wir wieder mit plastischen Beispielen Schritt für Schritt vor.
+Ergänzung folgt
 ***********************************************************
 {{3-4}}
 ***********************************************************
-Luo und Qi entwickelten 2009 die Enhanced Two-Step Floating Catchment Area (E2SFCA)-Methode, um eine Messung zu ermöglichen, die intuitiv sinnvoll ist, um den räumlichen Zugang zu (Gesundheits-)Dienstleistern zu bestimmen. Sie basieren auf den vorausgegangenen Überlegungen von Luo und Wang (2003) und Radke und Mu (2000). Die Methodengruppe ist darüber hinaus eng verbunden mit den von Huff (1964) getroffenen Erkenntnissen zu Einzugsgebieten.
+Ergänzung folgt
 ***********************************************************
 
 {{4-5}}
 ***********************************************************
-Die Herleitung der E2SFCA unterehmen wir wie folgt:
-
-1. Suche für jenden Versorgungsstandort (_Suppyer_) _S<sub>1</sub>_...
-
-2. die geographisch verteilten Bevölkerungsstandorte (_Population_) von _P<sub>k</sub>_...
-
-3. die sich durch innerhalb eines Einzugsgebiet mit einer Enfernung (_Distance_) von _d_ bis _d<sub>0</sub>_ befinden.
-
-4. Berechne das Verhältnis (_Ratio_) _R<sub>j</sub>_  zwischen des Versorgungsstandortes und der jeweiligen Bevölkerung innerhalb des Einzugsgebietes.   
-
-
-![2sfcaexplainer_step1_1](doc\pic\2sfcaexplainer_step1_1.gif "Abb.: 1. Schritt der 2sfca-Methode - Verhältnis von Angebot (P<sub>k</sub>) und Bevölkerung (P<sub>k</sub>) ermitteln.")
+Ergänzung folgt
 
 ***********************************************************
 
 
 {{5}}
 ***********************************************************
-5. Der erste Teilschritt ist für alle Standorte wiederholbar. _Bemerkung: Berücksichtige, dass durch diese Schritte eine Gewichtung von Kapazitätsmerkmalen an einem Versorgungsstandort möglich ist, wie am Standort von S<sub>2</sub>, S<sub>3</sub> und S<sub>4</sub> sichtbar wird._
-
-![2sfcaexplainer_step1_2](doc\pic\2sfcaexplainer_step1_2.gif "Abb.: 1. Schritt der 2sfca-Methode - Wiederholung für alle weitern Standorte.")
+Ergänzung folgt
 ***********************************************************
 
 # Der DVA-Code
+Bereitstellung bei Produktivgang
 ## Softwarearchitektur
+Bereitstellung bei Produktivgang
 ## Hardwarearchitektur (strukturelle Empfehlung)
-
-
-
-# Liascript Beispiele
-This is your **course** initialization stub.
-
-Please see the [Docs](https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md)
-to find out what is possible in [LiaScript](https://liascript.github.io).
-
-If you want to use instant help in your Atom IDE, please type **lia** to see all available shortcuts.
-
-##
-
-You can use common [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) syntax to create your course, such as:
-
-1. Lists
-2. ordered or
-
-   * unordered
-   * ones ...
-
-
-| Header 1   | Header 2   |
-| :--------- | :--------- |
-| Item 1     | Item 2     |
-
-
-Images:
-
-![images](https://farm2.static.flickr.com/1618/26701766821_7bea494826.jpg)
-
-
-### Extensions
-
-     --{{0}}--
-But you can also include other features such as spoken text.
-
-      --{{1}}--
-Insert any kind of audio file:
-
-       {{1}}
-?[audio](https://bigsoundbank.com/UPLOAD/mp3/1068.mp3)
-
-
-     --{{2}}--
-Even videos or change the language completely.
-
-       {{2-3}}
-!?[video](https://www.youtube.com/watch?v=bICfKRyKTwE)
-
-
-      --{{3 Russian Female}}--
-Первоначально создан в 2004 году Джоном Грубером (англ. John Gruber) и Аароном
-Шварцем. Многие идеи языка были позаимствованы из существующих соглашений по
-разметке текста в электронных письмах...
-
-
-    {{3}}
-Type "voice" to see a list of all available languages.
-
-
-### Styling
-
-<!-- class = "animated rollIn" style = "animation-delay: 2s; color: purple" -->
-The whole text-block should appear in purple color and with a wobbling effect.
-Which is a **bad** example, please use it with caution ...
-~~ only this is red ;-) ~~ <!-- class = "animated infinite bounce" style = "color: red;" -->
-
-## Charts
-
-Use ASCII-Art to draw diagrams:
-
-                                    Multiline
-    1.9 |    DOTS
-        |                 ***
-      y |               *     *
-      - | r r r r r r r*r r r r*r r r r r r r
-      a |             *         *
-      x |            *           *
-      i | B B B B B * B B B B B B * B B B B B
-      s |         *                 *
-        | *  * *                       * *  *
-     -1 +------------------------------------
-        0              x-axis               1
-
-## Quizzes
-
-### A Textquiz
-
-What did the **fish** say when he hit a **concrete wall**?
-
-    [[dam]]
-
-### Multiple Choice
-
-Just add as many points as you wish:
-
-    [[X]] Only the **X** marks the correct point.
-    [[ ]] Empty ones are wrong.
-    [[X]] ...
-
-### Single Choice
-
-Just add as many points as you wish:
-
-    [( )] ...
-    [(X)] <-- Only the **X** is allowed.
-    [( )] ...
-
-## Executable Code
-
-A drawing example, for demonstrating that any JavaScript library can be used, also for drawing.
-
-```javascript
-// Initialize a Line chart in the container with the ID chart1
-new Chartist.Line('#chart1', {
-  labels: [1, 2, 3, 4],
-  series: [[100, 120, 180, 200]]
-});
-
-// Initialize a Line chart in the container with the ID chart2
-new Chartist.Bar('#chart2', {
-  labels: [1, 2, 3, 4],
-  series: [[5, 2, 8, 3]]
-});
-```
-<script>@input</script>
-
-<div class="ct-chart ct-golden-section" id="chart1"></div>
-<div class="ct-chart ct-golden-section" id="chart2"></div>
-
-
-### Projects
-
-You can make your code executable and define projects:
-
-``` js     -EvalScript.js
-let who = data.first_name + " " + data.last_name;
-
-if(data.online) {
-  who + " is online"; }
-else {
-  who + " is NOT online"; }
-```
-``` json    +Data.json
-{
-  "first_name" :  "Sammy",
-  "last_name"  :  "Shark",
-  "online"     :  true
-}
-```
-<script>
-  // insert the JSON dataset into the local variable data
-  let data = @input(1);
-
-  // eval the script that uses this dataset
-  eval(`@input(0)`);
-</script>
-
-## More
-
-Find out what you can even do more with quizzes:
-
-https://liascript.github.io/course/?https://raw.githubusercontent.com/liaScript/docs/master/README.md
-
-
-# Beispiel
+Bereitstellung bei Produktivgang
