@@ -17,7 +17,7 @@ link:     style.css
 @end
 
 -->
-Die Inhalte sind als aufbereitet als Foliensatz auch hier erhätlich: [DVA Foliensatz]
+Die Inhalte sind aufbereitet als Foliensatz auch hier erhätlich: [DVA Foliensatz]
 
 [DVA Foliensatz]: https://liascript.github.io/course/?https://raw.githubusercontent.com/GeoinformationSystems/dva/main/Readme.md
 
