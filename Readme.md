@@ -17,7 +17,7 @@ link:     style.css
 @end
 
 -->
-Die Inhalte sind als aufbereitet als Foliensatz auch hier erhätlich: [DVA Foliensatz]
+Die Inhalte sind als aufbereitet als Foliensatz auch hier erhältlich: [DVA Foliensatz]
 
 [DVA Foliensatz]: https://liascript.github.io/course/?https://raw.githubusercontent.com/GeoinformationSystems/dva/main/Readme.md
 
@@ -114,13 +114,13 @@ Bereitstellung bei Produktivgang
 
 # Die DVA-ArcGIS-Toolbox
 
-Zusammen mit [ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview) (_getestet mit Version 3.2.2_) erlaubt die ArcGIS-Toolbox den Zugriff auf Dienste und Methoden die bei der Umsetzung von Versorgungsanalysen verschiedenster Art unterstützen.
+Zusammen mit [ArcGIS Pro](https://www.esri.com/en-us/arcgis/products/arcgis-pro/overview) (_getestet mit Version 3.2.2_) erlaubt die ArcGIS-Toolbox den Zugriff auf Dienste und Methoden, die bei der Umsetzung von Versorgungsanalysen verschiedenster Art unterstützen.
 
 ## Download und Einbindung
 
 <br>
 
-**Download:** Die Toolbox kann durch den [Shapepoint](https://datashare.tu-dresden.de/s/GArikyxRo3dr3L5) der TU-Dresden heruntergeladen werden.
+**Download:** Die Toolbox kann durch den [SharePoint](https://datashare.tu-dresden.de/s/GArikyxRo3dr3L5) der TU-Dresden heruntergeladen werden.
 
 **Einbindung:** Für die Einbindung der ArcGIS-Toolbox in ArcGIS hilft diese offizielle [Anleitung](https://pro.arcgis.com/de/pro-app/latest/help/projects/connect-to-a-toolbox.htm).
 
@@ -136,15 +136,19 @@ Sicht auf die Toolbox mit einem möglichen Ergebnis für ein Einzugsgebiet:
 
 ### Allgemeines zur Nutzung
 
+<!-- Infobox style="background-color: #EEE; padding:1rem"-->
+   ℹ️ <br>
+   Dieses Kapitel stellt keine methodischen Grundlagen vor. Für methodische Grundlagen bitte Kapitel **Die Methoden zur Versorgungsanalyse** zur Hilfe nehmen.
+
 Wesentlich für die Qualität des Analyseergebnisses sind die Eingangsdaten. Je nach technischer Ausrichtung können diese im Bereich der Versorgungsanalysen sehr unterschiedlich sein.
 
-Für die Berechnung der Enhanced2SFCA sollten folgende Eingabedaten in folgender Strukutr vorliegen:
+Für die Berechnung der Enhanced2SFCA sollten folgende Eingabedaten in folgender Struktur vorliegen:
 
 - **Nachfragestandorte oder -flächen**
 
-  - möglichst kleinräumlich als Punkt- oder Shapefeatureclass (z.B. Punktfeatureclass mit Werteverteilungen, Gemeindekonturen mit Kaufkraftpotenzial, 100x100m Zensusgrid mit Bevölkerungsdaten)
+  - möglichst klein räumlich als Punkt- oder Shapefeatureclass (z.B. Punktfeatureclass mit Werteverteilungen, Gemeindekonturen mit Kaufkraftpotenzial, 100x100m Zensusgrid mit Bevölkerungsdaten)
 
-  - idealerweise halten diese per Attributtabelle ein Nachfragepotential vor (z. B. Einwohneranzahl, Kaufkraft, Morbidität)
+  - Erforderlich ist das Hinterlegen eines Nachfragepotentials (z. B. Einwohneranzahl, Kaufkraft, Morbidität) in der Attributtabelle
 
 <br>
 
@@ -152,25 +156,30 @@ Für die Berechnung der Enhanced2SFCA sollten folgende Eingabedaten in folgender
 
   - Punktfeatureclass
 
-  - idealerweise halten diese per Attributtabelle ein Auslastungs, Verfügbarkeits-  oder Kapazitätskennzahl vor (z. B. Anzahl tätiger Ärzte am Standort, Verkaufsfläche)
+  - Erforderlich ist das Hinterlegen einer Auslastungs-, Verfügbarkeits-  oder Kapazitätskennzahl (z. B. Anzahl tätiger Ärzte am Standort, Verkaufsfläche)
+<br>
 
-<br>
-Optional, jedoch empfohlen, sind Gewichtungsfelder die z. B. die Kapazitätskennziffern bei Anbietern (Zahl der Ärzte etc.) oder die Menge der Nachfrager modellieren (z.B. Zahl der Einwohner).
 
-<br>
-<br>
-<h4>Dieses Kapitel stellt keine methodischen Grundlagen vor. Für methodische Grundlagen bitte Kapitel **Die Methode zur Versorugngsanalyse** zurhilfe nehmen.</h4>
+ <!-- Warningbox style="background-color: rgba(255, 99, 71, 0.5); padding:1rem"-->
+❕ <br>
+ **Berechnungshinweis:** <br>
+ Es können maximal **10.000.000 Routen** gleichzeitig gerechnet werden.<br>
+ <br>
+ Bei einer größeren Anzahl an Routen erhalten Sie eine Fehlermeldung.<br>
+ Ermitteln Sie Ihre Routenzahl wie folgt: <br>
+  Anzahl Nachfragefeatures * Anzahl Angebotsfeatures --> <br>
+  Das Ergebnis sollte < = 10.000.000 sein
 
 ### Grundlegende Parameter
 
 <h4>URL</h4>
 
-Zugriff auf den Methodenserver der die Berechnung der räumlichen Zugägnlichkeit übernimmt. Die URL ist über falko.kruegel@tu-dresden.de einzuholen.
+Zugriff auf den Methodenserver, der die Berechnung der räumlichen Zugänglichkeit übernimmt. Die URL ist über falko.kruegel@tu-dresden.de einzuholen.
 
 <br>
 
 <h4>Demand</h4>
-Punkt- oder Shapefeatureclass welches die Nachfragepotenziale enthält. Bitte berücksichtigen: Eine große Fläche und viele Angebots- und Nachfragestandorte bedingen die Berechnung vieler/großer Einzugsgebiete was die Berechnungszeit beeinflusst. Mehr als 1. Mio Routenabfragen können aktuell nicht zur gleichen Zeit berechnet werden.
+Punkt- oder Shapefeatureclass welches die Nachfragepotenziale enthält. Bitte berücksichtigen: Eine große Fläche und viele Angebots- und Nachfragestandorte bedingen die Berechnung vieler/großer Einzugsgebiete, was die Berechnungszeit beeinflusst. Mehr als 1. Mio Routenabfragen können aktuell nicht zur gleichen Zeit berechnet werden.
 
 <br>
 
@@ -184,8 +193,8 @@ Erfolgt keine Angabe des Nachfragegewichtes, so wird jedes Feature hinsichtlich 
 
 <h4>Supply</h4>
 
-Punkt- oder Shape-Featureclass das ein Angebotspotenzial enthält.
-Angebots- und Nachfragestandorte bedingen die Berechnung vieler/großer Einzugsgebiete was die Berechnungszeit beeinflusst. Mehr als 1. Mio Routenabfragen können aktuell nicht zur gleichen Zeit berechnet werden.
+Punkt- oder Shapefeatureclass das ein Angebotspotenzial enthält.
+Angebots- und Nachfragestandorte bedingen die Berechnung vieler/großer Einzugsgebiete was die Berechnungszeit beeinflusst. Mehr als 10.000.000 Routenabfragen können aktuell nicht zur gleichen Zeit berechnet werden.
 
 <br>
 
@@ -194,7 +203,7 @@ Angebots- und Nachfragestandorte bedingen die Berechnung vieler/großer Einzugsg
 Gewichtungsparameter zur Modellierung des Angebotspotenzials. Idealerweise als Short/Long/Float/Double hinterlegen.
 
 
-Erfolgt keine Angabe des Nachfragegewichts, so wird jedes Feature hinsichtlich seiner Angebotskapazität als gleichwertig angesehen.
+Erfolgt keine Angabe des Nachfragegewichtes, so wird jedes Feature hinsichtlich seiner Angebotskapazität als gleichwertig angesehen.
 
 <br>
 
@@ -204,7 +213,7 @@ Mit den Abgewichtungstypen wird die Bedeutung der Entfernung zwischen Angebots- 
 
 <br>
 
-Beispiel 1: Bei einer binären Modellierung wird bis zu einem individuell festgelegten Entfernungsschwellenwert davon ausgegangen, dass die Versorgungsleistung des Anbieteres innerhalb des Schwellwertes gleichgeartet ist.
+Beispiel 1: Bei einer binären Modellierung wird bis zu einem individuell festgelegten Entfernungsschwellenwert davon ausgegangen, dass die Versorgungsleistung des Anbieters innerhalb des Schwellenwertes gleichgeartet ist.
 
 Beispiel 2: Bei einer hybriden Modellierung werden mehrere (beliebig viele) Entfernungsschwellenwerte und ihre Bedeutung zur Versorgung definiert.
 
@@ -222,14 +231,17 @@ Folgende Wahlmöglichkeiten bestehen:
 
   * Mit dieser Wahl werden Eingabefaktoren für _Ranges_ und _Range-Faktors_ geöffnet. In _Ranges_  werden die individuellen Entfernungsschwellwerte hinterlegt. Entsprechend der Reihenfolge kann unter _Range-Faktors_ die individuell festgelegte Entfernungsabgewichtung hinterlegt werden.
 
-* **polynom** - Gewichtung nach einer polynomischen Formel $f(d_{ij}) = a_0 d_{ij}^{n} + a_1 d_{ij}^{n-1} + ... + a_n$ mit individuellen Coeffizienten $a_0, a_1, ..., a_n$ des Entfernungsfaktors
+* **polynom** - Gewichtung nach einer polynomischen Formel $f(d_{ij}) = a_0 d_{ij}^{n} + a_1 d_{ij}^{n-1} + ... + a_n$ mit individuellen Koeffizienten $a_0, a_1, ..., a_n$ des Entfernungsfaktors
 
   * Mit dieser Wahl werden Eingabefaktoren für _Polynom Coefficients_ geöffnet. Mit der polynomischen Abgewichtung kann eine eigene Abgewichtungsfunktion definiert werden.
 
 
 <br>
 
-<span style="color: #8B0000;font-weight: bold;"> Bitte beachten: Viele der Eingaben erfordern die Eingabe von Entfernungsparamtern (Travelmode). Die Entfernung kann per Zeit (in Sekunden) oder Entfernung (in Metern) hinterlegt werden. Dokumentation im nächsten Kapitel "Erweiterte Einstellungen".</span>
+<!-- Infobox style="background-color: #EEE; padding:1rem"-->
+   ℹ️ <br>
+   Bitte beachten: Viele der Eingaben erfordern die Eingabe von **Entfernungsparametern** (Travelmode). Die Entfernung kann per **Zeit** (in Sekunden) oder **Entfernung** (in Metern) hinterlegt werden. Dokumentation im nächsten Kapitel **Erweiterte Parameter**
+
 
 <br>
 
@@ -239,7 +251,7 @@ Weitere Einstellung für genauere Festsetzung des Routings.
 <br>
 
 <h4>Profile</h4>
-Reiseprofile über die das Routing erfolgt
+Reiseprofile, über die das Routing erfolgt
 
 <br>
 
@@ -252,14 +264,14 @@ Angabe, ob die Distanzmessung per Zeit- oder Entfernungseinheiten erfolgen sollt
 <br>
 
 <h4>Locationtype</h4>
-Sollen die Routenpfade von Startpunkt zum Zielpunkt (start) oder oder vom Zielpunkt zum Startpunkt (destination) erfolgen?
+Sollen die Routenpfade von Startpunkt zum Zielpunkt (start) oder vom Zielpunkt zum Startpunkt (destination) erfolgen?
 
-Hinweis: Im Einzelfall, kann dies entscheidend sein, wenn z. B. Einbahnstraßen oder Straßen mit verschiedenen Geschwindigkeitsbegrenzungen je Fahrtrichtung gelten. Zumeist wirken sich solche Einstellungen auf die Straßennaviation im Individualverkehr aus, jedoch weniger bei der Modellierung einer großen Menge an Routen wie in diesen Versorgungsmodellierungen.
+Hinweis: Im Einzelfall, kann dies entscheidend sein, wenn z. B. Einbahnstraßen oder Straßen mit verschiedenen Geschwindigkeitsbegrenzungen je Fahrtrichtung gelten. Zumeist wirken sich solche Einstellungen auf die Straßennavigation im Individualverkehr aus, jedoch weniger bei der Modellierung einer großen Menge an Routen wie in diesen Versorgungsmodellierungen.
 
 <br>
 
 <h4>Avoid Features</h4>
-Gibt es Straßenverbindungen, die nicht beim Routing berücksichtig werden sollen?
+Gibt es Straßenverbindungen, die nicht beim Routing berücksichtigt werden sollen?
 
 *	highways: Autobahnen werden vermieden
 *	tollways: Kostenpflichtige Straßen werden vermieden
@@ -273,10 +285,58 @@ Angabe eines Polygons, in dem ein Routing nicht erfolgen sollte.
 <br>
 
 <h4>Vehicle Type</h4>
-Die Routingergebnisse hängen von dem Medium ab, mit dem gereist wird. So sind beispielsweise LKW's (HGV)  bei der Routenwahl limitiert.
+Die Routingergebnisse hängen von dem Medium ab, mit dem gereist wird. So sind etwa LKW's (HGV)  bei der Routenwahl limitiert.
 Bei fehlender Angabe wird immer "driving_car" genutzt.
 
 <br>
+
+
+### Fehlermeldungen beheben
+
+<h4>url does not match valid format</h4>
+
+<!-- Infobox style="background-color: #EEE; padding:1rem"-->
+   ℹ️   <br>
+   url does not match valid format. Has the address been entered correctly? Use the help for more information (https://liascript.github.io/course/?https://raw.githubusercontent.com/GeoinformationSystems/dva/main/Readme.md#7
+
+Die im Toolbox-Parameter **URL** hinterlegte Adresse ist nicht korrekt.
+
+**Es gibt zwei Lösungsmöglichkeiten:**
+
+  1. Der Methodenservice der TU Dresden steht über eine URL-Freigabe zur Verfügung. Ist keine Freigabe vorhanden, wende dich bitte an falko.kruegel@tu-dresden.de
+  2. Der OpenAcessibilityService und der OpenrouteService werden lokal auf der eigenen Maschine betrieben und der URL-Parameter beginnt wird über Localhost (Bsp: http://localhost:8082) betrieben. Der Service zur Berechnung der Enhanded2SFCA-Methoden wird also selbst gehostet und betrieben. Informationen zum Betrieb sind im Kapitel unter **DVA-Code** zu entnehmen.
+<br>
+
+<h4>Failed to write results to output</h4>
+
+  <!-- Infobox style="background-color: #EEE; padding:1rem"-->
+     ℹ️   <br>
+     Failed to write results to output. Make sure demand-feature are writeable. ArcGIS often use schema-locking for Tabels, may that is the case.
+
+Fehlermeldung kann verursacht werden, wenn …
+
+-  in der aktuellen ArcGIS-Session Features, die Teil der Berechnung sind, editiert wurden. Oft wird die Tabelle durch ArcGIS gesperrt und die Schemasperre wird durch ArcGIS nicht freigegeben.
+- einer Schemasperre aus sonstigen Gründen eingeführt wird.
+
+**Lösung:**
+
+Speicher das ArcGIS-Projekt, beende ArcGIS und lade das Projekt erneut. Die hinterlegten Parameter der Toolbox können im Berechnungsverlauf von ArcGIS erneut geladen werden.
+
+<br>
+
+<h4>Failed to compute travel-time-matrix:Error at location </h4>
+
+  <!-- Infobox style="background-color: #EEE; padding:1rem"-->
+     ℹ️   <br>
+     Failed to compute travel-time-matrix: Error at location {*Coordinates*}: Unable to build an isochrone map.', 'path': '/v1/accessibility/enhanced_2sfca'}
+
+Fehlermeldung wird verursacht, wenn Standorte von einer öffentlichen Straße so weit entfernt sind, dass diese nicht mehr eindeutig und automatisch einer Straße zugeordnet werden können.
+
+**Lösung:**
+Die Features an der entsprechenden Koordinate müssen manuell verschoben werden. Hierzu  *Bearbeiten* --> *Ändern*--> Featureclass auswählen und entsprechenden Punkt auf der Karte verschieben --> *Speichern*. Ggf. muss anschließend das ArcGIS-Projekt neu geladen werden, weil durch ArcGIS Schemasperren gesetzt wurden.
+
+
+
 
 ## Isochrones
 Bereitstellung bei Produktivgang
@@ -310,9 +370,9 @@ Diese Art der Analysen sagen uns zwar, **ob** ein Anbieter _theoretisch_ zu erre
 
                           {{1-9}}
 ***********************************************************
-Sehr allgemein formuliert: Bei einem Einzugsgebiet handelt es sich um ein geographischen Raum, der sich um einen definierten Einflussbereich eines bestimmten Objektes ausbreitet.
+Sehr allgemein formuliert: Bei einem Einzugsgebiet handelt es sich um einen geographischen Raum, der sich um einen definierten Einflussbereich eines bestimmten Objektes ausbreitet.
 
-Um jedoch eine etwas schärfere Definition zu geben, die für die Beantwortung anthropogeographischer Fragestellungen, etwa aus der Versorgungsforschung, geeignet ist, werden wir diese Definition konkretisieren:
+Um jedoch eine etwas schärfere Definition zu geben, die für die Beantwortung anthropogeografischer Fragestellungen, etwa aus der Versorgungsforschung, geeignet ist, werden wir diese Definition konkretisieren:
 
 <br>
 
@@ -329,9 +389,9 @@ Ein **Einzugsgebiet**, umschließt einen geographischen Raum um einen Dienstleis
 
                         {{3-9}}
 ***********************************************************
-Die **Einzugsgebietsanalyse** ermöglicht es, die Eigenschaften eines oder mehrerer Einzugsgebiete mittels geographischer Analysemethoden zu beschreiben. Es ist beispielsweise möglich, die Größe (*Fläche, Ausdehnungseigenschaften, Topologie*) des Einzugsgebietes zu identifizieren oder die darin enthaltenen Elemente (*Potentiale*) zu ermitteln.
+Die **Einzugsgebietsanalyse** ermöglicht es, die Eigenschaften eines oder mehrerer Einzugsgebiete mittels geographischer Analysemethoden zu beschreiben. Es ist unter anderem möglich, die Größe (*Fläche, Ausdehnungseigenschaften, Topologie*) des Einzugsgebietes zu identifizieren oder die darin enthaltenen Elemente (*Potenziale*) zu ermitteln.
 
-![Beispielhaftes Einzugsgebiet](doc/pic/chatchment_explainer.jpg "Abb.: Um einen Dienstleistungsort gebildetes radiales Einzugegebiet (rote Linie) und netzwerkabhäniges Einzugsgebiet (blaue Fläche).") <!--- style "with:200px" --->
+![Beispielhaftes Einzugsgebiet](doc/pic/chatchment_explainer.jpg "Abb.: Um einen Dienstleistungsort gebildetes radiales Einzugsgebiet (rote Linie) und netzwerkabhängiges Einzugsgebiet (blaue Fläche).") <!--- style "with:200px" --->
 
 <Br>
 
@@ -349,24 +409,24 @@ Betrachten wir hierzu die Nachfrage einer Dienstleistung in einem zufällig gew�
                           {{5-9}}
 ***********************************************************
 
-Gehen wir in unserem Beispiel ferner von folgemdem aus:
+Gehen wir in unserem Beispiel ferner von folgendem aus:
 
 <span style="color: #335A17;font-weight: bold;"> Angebot:</span>.
 
-Das Angebot einer Dienstleistung wird durch eine hausärztliche Einzelpraxis repräsentiert, deren Fachpersonal ca. 2.000 Einwohner versorgen kann (und da nicht alle Einwohner jedes Quartal zum Arzt gehen handelt es sich um etwa 1.600 zu behandelnde Personen in einem Quartal).
+Das Angebot einer Dienstleistung wird durch eine hausärztliche Einzelpraxis repräsentiert, deren Fachpersonal ca. 2.000 Einwohner versorgen kann (und da nicht alle Einwohner jedes Quartal zum Arzt gehen, handelt es sich um etwa 1.600 zu behandelnde Personen in einem Quartal).
 
 <span style="color: #B2B2B2;font-weight: bold;"> Nachfrage:</span>
 
-Ein 100x100m Raster repräsentiert die Nachfragestandorte. Die Höhe der Nachfrage nach einem ärztlichen Angebot wird durch die Bevölkerungszahl am Wohnort anhand der innenstehenden Zahl repräsentiert.
+Ein 100x100m Raster repräsentiert die Nachfragestandorte. Die Höhe der Nachfrage nach einem ärztlichen Angebot wird durch die Bevölkerungszahl am Wohnort anhand der innen stehenden Zahl repräsentiert.
 
-![Beispielhaftes Untersuchungsgebiet](doc/pic/suppyer_demander.jpg "Abb.: Angebotsstandort (grüner Punkt) in einer Wohngebietslage in Hannover mit Wohnortbevölkerung als Nachfragestandorte (graues Raster)") <!--- style "with:100px" --->
+![Beispielhaftes Untersuchungsgebiet](doc/pic/suppyer_demander.jpg "Abb.: Angebotsstandort (Grüner Punkt) in einer Wohngebietslage in Hannover mit Wohnortsbevölkerung als Nachfragestandorte (graues Raster)") <!--- style "with:100px" --->
 
 ***********************************************************
 
                           {{6-9}}
 ***********************************************************
 
-Beginnen wir nun mit einer einfachen Einzugsgebietsanalyse.
+Beginnen wir indessen mit einer einfachen Einzugsgebietsanalyse.
 Finden wir heraus, wie viele Einwohner (Nachfragepotential) mit einer PKW-Fahrzeit von 2 Minuten den Standort erreichen.
 
 <span style="color: red;font-weight: bold;"> 2-Min Einzugsgebiet:</span>
@@ -377,7 +437,7 @@ Welche Nachfragestandorte (Bevölkerung) nach einer Dienstleistung (hausärztlic
 
 Wie groß ist das Nachfragepotential für diesen Standort?
 
-![Beispielhaftes Einzugsgebiet](doc/pic/catchment120_supplyer.jpg "Abb.: 2 Min-PKW-Einzugsgebiet um den Angebotsstandort (grüner Punkt)") <!--- style "with:200px" --->
+![Beispielhaftes Einzugsgebiet](doc/pic/catchment120_supplyer.jpg "Abb.: 2 Min-PKW-Einzugsgebiet um den Angebotsstandort (Grüner Punkt)") <!--- style "with:200px" --->
 
 
 ***********************************************************
@@ -390,7 +450,7 @@ Wie groß ist das Nachfragepotential für diesen Standort?
 1. Die räumliche Ausdehnung des Einzugsgebietes und die enthaltenen Nachfragestandorte
 2. Die Menge der Bevölkerung, die binnen zwei Minuten PKW-Fahrzeit einen Arzt erreichen.
 
-Wenn wir nun die Bevölkerung im Einzugsgebiet aufsummieren, kommen wir zu einer recht erstaunlichen Menge von 23.211 Einwohnern, die für die Einzelpraxis potentiell zu behandelnde Personen sein können.
+Wenn wir nun die Bevölkerung im Einzugsgebiet aufsummieren, kommen wir zu einer recht erstaunlichen Menge von 23.211 Einwohnern, die für die Einzelpraxis potenziell zu behandelnde Personen sein können.
 
 Folgende Aussage können wir treffen:
 
@@ -404,12 +464,12 @@ Folgende Aussage können wir treffen:
 ***********************************************************
 Und damit sind wir bei den Grenzen!
 
-Nur weil wir das Versorgungsgebiet einer Infrastruktur und das darin enthaltene Nachfragepotenzial kennen, ist die Situation oder Qualität der Versorung defr Einwohner noch lange nicht bekannt. Da wir wissem, das die hausärztliche Praxis nur ca. 2.000 Einwohner versorgt, können wir noch keine Aussagen über die Versorgungssituation aller 23.000 Einwohner treffen.
+Nur weil wir das Versorgungsgebiet einer Infrastruktur und das darin enthaltene Nachfragepotenzial kennen, ist die Situation oder Qualität der Versorgung der Einwohner noch lange nicht bekannt. Da bekannt ist, das die hausärztliche Praxis nur ca. 2.000 Einwohner versorgt, können wir noch keine Aussagen über die Versorgungssituation aller 23.000 Einwohner treffen.
 
 <h4> Grenzen von Einzugsgebietsanalysen:</h4>
-Diese geographischen Analysen beantworten die Fragen ob eine Dienstleitung **erreichbar** ist. Ein Verständnis, ob eine Dienstleitung für die Nachfragenden überhaupt verfügbar ist, lässt damit nicht gewinnen (Frage nach einer Dimension der Zugänglichkeit im Zuge von Auslastung).
+Diese geographischen Analysen beantworten die Fragen, ob eine Dienstleitung **erreichbar** ist. Ein Verständnis, ob eine Dienstleitung für die Nachfragenden überhaupt verfügbar ist, lässt damit nicht gewinnen (Frage nach einer Dimension der Zugänglichkeit im Zuge von Auslastung).
 
-Wirdmen wir uns daher im nächsten Kapitel den gravitationsbasierten Analysemethoden
+Widmen wir uns daher im nächsten Kapitel den gravitationsbasierten Analysemethoden
 
 <Br>
 
@@ -428,7 +488,7 @@ Im Allgemeinen enthalten die sozialwissenschaftlichen Modelle einige Elemente vo
 
 {{2-10}}
 ***********************************************************
-Die Berücksichtung einer "Anziehungskraft" ist eine wichtige Vorsetzung, um Versorgung besser zu verstehen. Wir konzentrieren uns im folgenden auf die 2SFCA-Methodengruppe (engl. Two-step floating catchment area method). Um uns der Metode zu nähern gehen wir wieder mit plastischen Beispielen Schritt für Schritt vor.
+Die Berücksichtigung einer "Anziehungskraft" ist eine wichtige Vorsetzung, um Versorgung besser zu verstehen. Wir konzentrieren uns im folgenden auf die 2SFCA-Methodengruppe (engl. Two-step floating catchment area method). Um uns der Methode zu nähern, gehen wir wieder mit plastischen Beispielen Schritt für Schritt vor.
 ***********************************************************
 
 {{3-10}}
@@ -438,15 +498,15 @@ Die Berücksichtung einer "Anziehungskraft" ist eine wichtige Vorsetzung, um Ver
 
 {{4-10}}
 ***********************************************************
-Die Herleitung der E2SFCA unterehmen wir wie folgt:
+Die Herleitung der E2SFCA unternehmen wir wie folgt:
 
-1. Suche für jenden Versorgungsstandort (_Suppyer_) _S<sub>1</sub>_...
+1. Suche für jeden Versorgungsstandort (_Supplyer_) _S<sub>1</sub>_ …
 
-2. die geographisch verteilten Bevölkerungsstandorte (_Population_) von _P<sub>k</sub>_...
+2. die geographisch verteilten Bevölkerungsstandorte (_Population_) von _P<sub>k</sub>_ …
 
-3. die sich durch innerhalb eines Einzugsgebiet mit einer Enfernung (_Distance_) von _d_ bis _d<sub>0</sub>_ befinden.
+3. die sich durch innerhalb eines Einzugsgebiet mit einer Entfernung (_Distance_) von _d_ bis _d<sub>0</sub>_ befinden.
 
-4. Berechne das Verhältnis (_Ratio_) _R<sub>j</sub>_  zwischen des Versorgungsstandortes und der jeweiligen Bevölkerung innerhalb des Einzugsgebietes.   
+4. Berechne das Verhältnis (_Ratio_) _R<sub>j</sub>_ zwischen des Versorgungsstandortes und der jeweiligen Bevölkerung innerhalb des Einzugsgebietes.   
 
 
 ![2sfcaexplainer_step1_1](doc\pic\2sfcaexplainer_step1_1.gif "Abb.: 1. Schritt der 2sfca-Methode - Verhältnis von Angebot (P<sub>k</sub>) und Bevölkerung (P<sub>k</sub>) ermitteln.") <!--- style "with:200px" --->
@@ -456,7 +516,7 @@ Die Herleitung der E2SFCA unterehmen wir wie folgt:
 {{5-10}}
 ***********************************************************
 
-5. Der erste Teilschritt ist für alle Standorte wiederholbar. _Bemerkung: Berücksichtige, dass durch diese Schritte eine Gewichtung von Kapazitätsmerkmalen an einem Versorgungsstandort möglich ist, wie am Standort von S<sub>2</sub>, S<sub>3</sub> und S<sub>4</sub> sichtbar wird._
+5. Der erste Teilschritt ist für alle Standorte wiederholbar. _Bemerkung: Berücksichtige, dass durch diese Schritte eine Gewichtung von Kapazitätsmerkmalen an einem Versorgungsstandort möglich ist, wie am Standort von S<sub>2</sub>, S<sub>3</sub> und S<sub>4</sub> sichtbar wird.
 
 ![2sfcaexplainer_step1_2](doc\pic\2sfcaexplainer_step1_2.gif "Abb.: 1. Schritt der 2sfca-Methode - Wiederholung für alle weitern Standorte.") <!--- style "with:200px" --->
 
@@ -464,31 +524,31 @@ Die Herleitung der E2SFCA unterehmen wir wie folgt:
 
 {{6-10}}
 ****
-6. Suche für jeden Bevölkerungsstandort der innerhalb des Einzugsgebietesschwellwertes _d<sub>0</sub>_ liegt, alle erreichbaren Versorgungsstandorte und addiere deren unter 4. genannte Verhältnis _R<sub>j</sub>_ der Versorgungsstandortes und der jeweiligen Bevölkerung.
+6. Suche für jeden Bevölkerungsstandort, der innerhalb des Einzugsgebietesschwellenwertes _d<sub>0</sub>_ liegt, alle erreichbaren Versorgungsstandorte und addiere deren unter 4. genannte Verhältnis _R<sub>j</sub>_ des Versorgungsstandortes und der jeweiligen Bevölkerung.
 
-![2sfcaexplainer_step2](doc\pic\2sfcaexplainer_step2.gif "Abb.: 2. Schritt der 2sfca-Methode - Wiederholung für alle weitern Standorte.") <!--- style "with:200px" --->
+![2sfcaexplainer_step2](doc\pic\2sfcaexplainer_step2.gif "Abb.: 2. Schritt der 2sfca-Methode - Wiederholung für alle weiteren Standorte.") <!--- style "with:200px" --->
 ***********************************************************
 
 {{7-10}}
 ***********************************************************
-Nach Toblers (1970) erstem Gesetz der Geographie _hängt alles mit allem zusammen, aber nähere Sachen hängen stärker voneinander ab, als weiter entfernte_. Noch wird das durch unserer Vorgehen keine Berücksichtigung.
+Nach Toblers (1970) erstem Gesetz der Geographie _hängt alles mit allem zusammen, aber nähere Sachen hängen stärker voneinander ab, als weiter entfernte_. Noch wird das durch unser Vorgehen keine Berücksichtigung.
 
 Wir implementieren daher noch eine entfernungsabhängige Gewichtungsfunktion, damit das "Enhanced" in _E2SFCA_ seinem Namen gerecht wird.
 
-![2sfcaexplainer_enhanced](doc\pic\2sfcaexplainer_enhanced.gif "Abb.: Darstellung verschiedener Entfernungsabgewichtung die eine Abnahe der Versorgungsleistung von S über die Entfernung d verdeutlichen.") <!--- style "with:200px" --->
+![2sfcaexplainer_enhanced](doc\pic\2sfcaexplainer_enhanced.gif "Abb.: Darstellung verschiedener Entfernungsabgewichtung die eine Abnahme der Versorgungsleistung von S über die Entfernung d verdeutlichen.") <!--- style "with:200px" --->
 
 ***********************************************************
 
 {{8-10}}
 ***********************************************************
-Die Art und Weise der Abgewichtung sowie die Wahl der Einzugsgebietsgröße sind entscheidend für die Plausibiltät des Ergebnisses. Sie hängen jedoch stark vom Untersuchungsgegenstand und der entsprechenden "Fachfrage" ab.
+Die Art und Weise der Abgewichtung sowie die Wahl der Einzugsgebietsgröße sind entscheidend für die Plausibilität des Ergebnisses. Sie hängen jedoch stark vom Untersuchungsgegenstand und der entsprechenden "Fachfrage" ab.
 
 
 ***********************************************************
 
 {{9-10}}
 ***********************************************************
-Im nächsten Kapitel betrachten wir diese Abfolge noch einmal. Nun aber zur besseren Nachvollziehbarkeit mit dem Praxisbeispiel und Karten die schon aus der Erläuterung des Kapitels zur Einzugsgebieten bekannt sind.
+Im nächsten Kapitel betrachten wir diese Abfolge noch einmal. Nun aber zur besseren Nachvollziehbarkeit mit dem Praxisbeispiel und Karten, die schon aus der Erläuterung des Kapitels zu Einzugsgebieten bekannt sind.
 ***********************************************************
 
 {{10-10}}
