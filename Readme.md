@@ -18,6 +18,7 @@ link:     style.css
 
 -->
 Die Inhalte sind als aufbereitet als Foliensatz auch hier erhältlich: [DVA Foliensatz]
+
 [DVA Foliensatz]: https://liascript.github.io/course/?https://raw.githubusercontent.com/GeoinformationSystems/dva/main/Readme.md
 
 
