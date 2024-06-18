@@ -343,7 +343,7 @@ Die Features an der entsprechenden Koordinate müssen manuell verschoben werden.
    ℹ️   <br>
    Bei der Berechnung mit dem Tool werden stellenweise keine Access-Werte berechnet (<NULL>), obwohl Werte für Nachfrage (Demand) vorliegen und bei anderer Parametrisierung Access-Werte berechnet werden. Woran liegt das?
 
-<NULL>-Werte treten dann auf, wenn für das entsprechende Gebiet keine Infrastruktur erreicht werden kann. Das Gebiet ist außerhalb definieter Einzugsgebietsgrenzen. Dort, so <NULL>-Werte vorlegen, kann keine Infrastruktur in der gewünschten Zeit/Entfernung erreicht werden.
+<NULL>-Werte treten dann auf, wenn für das entsprechende Gebiet keine Infrastruktur erreicht werden kann. Das Gebiet ist außerhalb definieter Einzugsgebietsgrenzen. Dort, wo <NULL>-Werte vorlegen, kann keine Infrastruktur in der gewünschten Zeit/Entfernung erreicht werden.
 
 <br>
 
