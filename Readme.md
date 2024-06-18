@@ -335,7 +335,17 @@ Fehlermeldung wird verursacht, wenn Standorte von einer öffentlichen Straße so
 **Lösung:**
 Die Features an der entsprechenden Koordinate müssen manuell verschoben werden. Hierzu  *Bearbeiten* --> *Ändern*--> Featureclass auswählen und entsprechenden Punkt auf der Karte verschieben --> *Speichern*. Ggf. muss anschließend das ArcGIS-Projekt neu geladen werden, weil durch ArcGIS Schemasperren gesetzt wurden.
 
+### FAQ zur fachlichen Nutzung
 
+<h4>stellenweise keine Access-Werte berechnet (<NULL>) </h4>
+
+<!-- Infobox style="background-color: #EEE; padding:1rem"-->
+   ℹ️   <br>
+   Bei der Berechnung mit dem Tool werden stellenweise keine Access-Werte berechnet (<NULL>), obwohl Werte für Nachfrage (Dmeand) vorliegen und bei anderer Parametrisierung Access-Werte berechnet werden. Woran liegt das?
+
+<NULL>-Werte treten dann auf, wenn die Berechnung außerhalb definieter Einzugsgebiete liegt. Dort, so <NULL>-Werte vorlegen, kann keine Infrastruktur in der gewünschten Zeit erreicht werden.
+
+<br>
 
 
 ## Isochrones
